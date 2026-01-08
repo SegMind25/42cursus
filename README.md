@@ -59,19 +59,19 @@
     <td></td>
     <td></td>
     <td align="center">
-[**`rank02`**]()
+❌
     </td>
     <td align="center">
-[**`rank03`**]()
+❌
     </td>
     <td align="center">
-[**`rank04`**]()
+❌
     </td>
     <td align="center">
-[**`rank05`**]()
+❌
     </td>
     <td align="center">
-[**`rank06`**]()
+❌
     </td>
   </tr>
 </table>
