@@ -1,163 +1,122 @@
-```markdown
-*This repository documents my journey through the 42 Common Core (42cursus), completed with dedication, curiosity, and zero AI-generated code.*
+<div align="center">
+  
+# <a href="#"><img width="300" align="center" src="https://github.com/user-attachments/assets/98c7b6ef-d3a8-425e-83c7-f118db56754e"></a> Cursus Common Core
 
-# 🏛️ 42 Common Core — The Full Journey
+The 42 Common Core is an intensive, self-taught, project-based curriculum focused on software development and problem-solving. It emphasizes autonomy, collaboration, and deep technical understanding.<br>
 
-> “At 42, you don’t learn to code. You learn to learn, to solve, and to build — alone and together.”
+</div>
 
-This repository is a living archive of my progress through the **42 Common Core** — a rigorous, peer-driven, project-based curriculum designed to transform beginners into autonomous, systems-aware software engineers. From my first `ft_putchar` to launching networked services and OS kernels, every line was written to understand, not just to pass.
+<div align="center">
 
----
+<table>
+  <tr>
+    <td align="center">Milestone 0</td>
+    <td align="center">Milestone 1</td>
+    <td align="center">Milestone 2</td>
+    <td align="center">Milestone 3</td>
+    <td align="center">Milestone 4</td>
+    <td align="center">Milestone 5</td>
+    <td align="center">Milestone 6</td>
+  </tr>
+  <tr>
+    <td>
 
-## 🗺️ Curriculum Overview
+[**`libft`**](https://github.com/iodx2004/42Cursus/tree/main/libft)
+    </td>
+    <td>
 
-The 42 Common Core is divided into **7 major branches**, each building on the last:
+[**`born2beRoot`**](https://github.com/iodx2004/42Cursus/tree/main/Born2beRoot)<br>
+[**`ft_printf`**](https://github.com/iodx2004/42Cursus/tree/main/ft_printf)<br>
+[**`get_next_line`**](https://github.com/iodx2004/42Cursus/tree/main/get_next_line)
+    </td>
+    <td>
 
-| Milestone         | Projects                                                                 | Core Skills Developed                          |
-|-------------------|--------------------------------------------------------------------------|-----------------------------------------------|
-| **00. Libft**     | `libft`                                                                  | C, memory, pointers, static libraries         |
-| **01. Born2beroot** | System setup, `sudo`, `ufw`, `cron`, `log`, LVM, `netcat`                | Linux system administration, security          |
-| **02. ft_printf** | `ft_printf`                                                              | Variadic functions, format parsing, buffers    |
-| **03. get_next_line** | `get_next_line` (with bonus)                                           | File descriptors, static variables, line I/O   |
-| **04. Born2beroot (Part 2)** | Monitoring script, WordPress + SQL + SSL setup                        | Bash, automation, web stack deployment         |
-| **05. minishell** | `minishell`                                                              | Shells, parsing, processes, signals, pipes     |
-| **06. C++**       | `cpp00` → `cpp09` (e.g., `Duck`, `PhoneBook`, `FragTrap`, `Span`, `Pmerge`) | OOP, RAII, templates, STL, modern C++         |
-| **07. NetPractice** | Network configuration, firewall, routing, DHCP, DNS                     | TCP/IP, networking fundamentals                |
-| **08. Exam Rank 03** | Final assessment (reimplementing system tools)                          | Speed, correctness, norm compliance           |
-| **09. Graphics & Algorithms** | `fract-ol`, `fdf`, `cub3D`, `miniRT`                                | Graphics, raycasting, 3D math, rendering      |
-| **10. UNIX System** | `pipex`, `so_long`, `philosophers`, `minitalk`, `push_swap`            | Processes, IPC, concurrency, algorithms        |
-| **11. Web**       | `webserv`, `ft_irc`, `ft_containers`, `ft_transcendence` (bonus)       | HTTP, sockets, servers, real-time networking   |
-| **12. Exam Rank 05** | Final assessment (complex system programming)                           | Mastery of C/C++, systems design              |
-| **13. Final Projects** | Choose 1–2 from: `Inception` (Docker), `ft_services` (K8s), `ft_server` | DevOps, containerization, full-stack systems   |
+[**`push_swap`**](https://github.com/iodx2004/42Cursus/tree/main/push_swap)<br>
+[**`fractol`**](https://github.com/iodx2004/42Cursus/tree/main/fractol)<br>
+[**`pipex`**](https://github.com/iodx2004/42Cursus/tree/main/pipex)
+    </td>
+    <td>
 
----
+[**`philosophers`**](https://github.com/iodx2004/42Cursus/tree/main/philosophers)<br>
+[**`minishell`**](https://github.com/iodx2004/42Cursus/tree/main/minishell)
+    </td>
+    <td>
 
-## 🧱 Foundation: C & Systems Programming
+[**`netpractice`**](https://github.com/iodx2004/42Cursus/tree/main/netpractice)<br>
+[**`cub3D`**](https://github.com/iodx2004/42Cursus/tree/main/cub3D)<br>
+[**`cpp0-4`**](https://github.com/iodx2004/42Cursus/tree/main/cpp0-4)
+    </td>
+    <td>
 
-### 🔹 Libft  
-My first library — reimplementing `libc` functions taught me memory, pointers, and the value of reusable code.  
-✅ Norm-compliant | ✅ Zero leaks (valgrind) | ✅ Bonus: linked list
+[**`ft_irc`**](https://github.com/iodx2004/42Cursus/tree/main/ft_irc)<br>
+[**`inception`**](https://github.com/iodx2004/42Cursus/tree/main/inception)<br>
+[**`cpp5-9`**](https://github.com/iodx2004/42Cursus/tree/main/cpp5-9)
+    </td>
+    <td>
 
-### 🔹 ft_printf  
-Mastered variadic arguments and dynamic buffer management. Handles all standard format specifiers (`%s`, `%d`, `%x`, `%p`, etc.).  
-✅ Modular design | ✅ No undefined behavior
+[**`transcendence`**](https://github.com/iodx2004/42Cursus/tree/main/transcendence)
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td align="center">
+[**`rank02`**](https://github.com/iodx2004/42-Exams/tree/main/rank02)
+    </td>
+    <td align="center">
+[**`rank03`**](https://github.com/iodx2004/42-Exams-rank03)
+    </td>
+    <td align="center">
+[**`rank04`**](https://github.com/iodx2004/42-exams-rank04)
+    </td>
+    <td align="center">
+[**`rank05`**](https://github.com/iodx2004/42-exams-rank05)
+    </td>
+    <td align="center">
+[**`rank06`**](https://github.com/iodx2004/42-exams-rank06)
+    </td>
+  </tr>
+</table>
 
-### 🔹 get_next_line  
-Solved the classic line-reading problem using file descriptors and static storage — a key skill for shells and parsers.  
-✅ Works with any FD | ✅ Handles huge lines | ✅ Bonus: multiple FDs
+</div>
 
----
+<h2>Project Overview</h2>
+<br>
 
-## ⚙️ System & Shell Development
+<div align="center">
 
-### 🔹 minishell  
-A full POSIX-compliant shell with pipes, redirections, environment variables, signals (`Ctrl-C`, `Ctrl-\`), and built-ins (`cd`, `export`, `unset`, `exit`).  
-✅ AST parsing | ✅ Fork/exec model | ✅ Signal-safe
+| Icon | Project | Description | OS |
+|:---:|:---|:---|:---:|
+| `📖` | [**libft**](https://github.com/iodx2004/42Cursus/tree/main/libft) | Essential C functions library replication | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| | **Milestone 0** | | |
+| `🐧` | [**born2beRoot**](https://github.com/iodx2004/42Cursus/tree/main/Born2beRoot) | Configure a secure Linux VM with services | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| `🖨️` | [**ft_printf**](https://github.com/iodx2004/42Cursus/tree/main/ft_printf) | Reimplement `printf` from scratch in C | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| `📝` | [**get_next_line**](https://github.com/iodx2004/42Cursus/tree/main/get_next_line) | Read input line by line using file descriptors | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| | **Milestone 1** | | |
+| `🔢` | [**push_swap**](https://github.com/iodx2004/42Cursus/tree/main/push_swap) | Optimize sorting with minimal stack operations | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| `🌀` | [**fractol**](https://github.com/iodx2004/42Cursus/tree/main/fractol) | Render Mandelbrot, Julia, and other fractals | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| `🧪` | [**pipex**](https://github.com/iodx2004/42Cursus/tree/main/pipex) | Replicate shell pipe behavior with `fork`/`pipe` | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| `🔖` | [**rank02**](https://github.com/iodx2004/42-Exams/tree/main/rank02) | Exam: reimplement core C functions under time | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| | **Milestone 2** | | |
+| `🔖` | [**rank03**](https://github.com/iodx2004/42-Exams-rank03) | Exam: random assignment (`printf`, `gnl`, etc.) | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🍽️` | [**philosophers**](https://github.com/iodx2004/42Cursus/tree/main/philosophers) | Solve dining philosophers with threads | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `📦` | [**minishell**](https://github.com/iodx2004/42Cursus/tree/main/minishell) | Build a POSIX-compliant shell | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| | **Milestone 3** | | |
+| `🔖` | [**rank04**](https://github.com/iodx2004/42-exams-rank04) | Exam: develop a minimal shell | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🎮` | [**cub3D**](https://github.com/iodx2004/42Cursus/tree/main/cub3D) | Wolfenstein-style raycasting engine | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🌐` | [**netpractice**](https://github.com/iodx2004/42Cursus/tree/main/netpractice) | Hands-on networking: routing, DNS, firewall | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🏗️` | [**cpp0-4**](https://github.com/iodx2004/42Cursus/tree/main/cpp0-4) | C++ fundamentals: OOP, RAII, basic STL | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| | **Milestone 4** | | |
+| `🧩` | [**inception**](https://github.com/iodx2004/42Cursus/tree/main/inception) | Deploy full web stack using Docker | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `💬` | [**ft_irc**](https://github.com/iodx2004/42Cursus/tree/main/ft_irc) | Multi-user IRC server with protocol support | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🏗️` | [**cpp5-9**](https://github.com/iodx2004/42Cursus/tree/main/cpp5-9) | Advanced C++: templates, STL, algorithms | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🔖` | [**rank05**](https://github.com/iodx2004/42-exams-rank05) | Final C/C++ systems programming exam | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| | **Milestone 5** | | |
+| `🕹️` | [**transcendence**](https://github.com/iodx2004/42Cursus/tree/main/transcendence) | Real-time 2D multiplayer Pong with web stack | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🔖` | [**rank06**](https://github.com/iodx2004/42-exams-rank06) | Advanced defense & architecture exam | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 
-### 🔹 Born2beroot  
-From bare-metal setup to secure, monitored Debian server with WordPress, SQL, and HTTPS.  
-✅ LVM partitioning | ✅ `sudo` rules | ✅ `ufw` firewall | ✅ `cron` monitoring script
+</div>
 
----
-
-## 🧠 C++ & OOP Mastery
-
-### 🔹 C++ Modules (`cpp00`–`cpp09`)  
-Evolved from basic classes to advanced templates, inheritance, polymorphism, and STL mastery.  
-- `PhoneBook`: encapsulation  
-- `FragTrap`: inheritance & virtual functions  
-- `Span`: templates & exceptions  
-- `Pmerge`: hybrid sorting algorithms (Ford-Johnson)  
-
-✅ Strong RAII | ✅ Exception safety | ✅ STL integration
-
----
-
-## 🌐 Networking & Concurrency
-
-### 🔹 NetPractice  
-Configured a full network lab: static routing, DHCP, DNS, firewall rules, and packet inspection.  
-✅ Hands-on `ip`, `iptables`, `tcpdump`
-
-### 🔹 webserv  
-A non-blocking HTTP/1.1 server supporting `GET`, `POST`, `DELETE`, CGI, and virtual hosts.  
-✅ epoll/kqueue | ✅ Config parsing | ✅ MIME types
-
-### 🔹 ft_irc  
-A multi-user IRC server with channels, private messages, and protocol compliance.  
-✅ TCP sockets | ✅ Command parsing | ✅ Multi-client async I/O
-
----
-
-## 🎮 Graphics & Algorithms
-
-### 🔹 cub3D  
-A *Wolfenstein*-style raycasting engine with textures, minimap, and keyboard controls.  
-✅ Ray-plane intersection | ✅ Sprite rendering | ✅ mlx42 graphics
-
-### 🔹 miniRT  
-A raytracer with spheres, planes, cylinders, lighting, shadows, and reflections.  
-✅ Vector math | ✅ Phong shading | ✅ Recursive rays
-
-### 🔹 push_swap  
-Optimized sorting of integers using only two stack operations (`sa`, `ra`, etc.) with minimal moves.  
-✅ Algorithmic thinking | ✅ Chunking strategy | ✅ Visualizer
-
----
-
-## 🚀 Final Projects (Choose 1–2)
-
-### 🔹 Inception  
-Deploy a full web stack (`nginx`, `mariadb`, `wordpress`, `ftps`, `grafana`) using **Docker** and `docker-compose`.  
-✅ Idempotent | ✅ Secure (TLS, fail2ban) |  ✅ Monitoring
-
-### 🔹 ft_services  
-Orchestrate microservices (`mysql`, `redis`, `nginx`, `flask`) on a **Kubernetes** cluster with Helm and ingress.  
-✅ CI/CD pipeline | ✅ Auto-scaling | ✅ Persistent volumes
-
----
-
-## 🔒 Philosophy & Ethics
-
-### AI Usage Statement  
-**No AI tools were used to generate, explain, or debug code in any project.**  
-Every function, algorithm, and design decision was the result of personal effort, peer review, and deep study — in full respect of 42’s pedagogical values.
-
-> “If you didn’t struggle, you didn’t learn.”
-
----
-
-## 💡 Tips for New Pisciners
-
-1. **Read the subject PDF — twice.**  
-2. **Test edge cases** — 42 tests are brutal.  
-3. **Use `valgrind` early and often.**  
-4. **Peer-review is your best teacher.**  
-5. **Don’t rush. Depth > speed.**
-
----
-
-## 📜 License
-
-All code in this repository is for educational purposes only and is not licensed for commercial use.  
-© 2024 iodx2004 — 42 Network
-
----
-
-> “The only way out is through.” — 42 Motto  
-> This repository is my through.
-```
-
----
-
-### ✅ How to Use This README
-- Place it at the **root of your main 42cursus repository** (e.g., `~/42cursus/README.md`)
-- Update project statuses as you complete them
-- Link to individual project folders (e.g., `[libft](./libft)`)
-
-This README not only satisfies the **spirit of 42**, but also serves as:
-- A **personal logbook**
-- A **showcase for recruiters**
-- A **guide for peers**
-
-Good luck on your journey — and **never stop coding**. 💻🔥
+<div align="left">
+This repository reflects my journey through the 42 Common Core — built with patience, discipline, and zero AI-generated code.
+</div>
