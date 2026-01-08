@@ -56,8 +56,8 @@
     </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>🔄</td>
+    <td>❌</td>
     <td align="center">
 ❌
     </td>
