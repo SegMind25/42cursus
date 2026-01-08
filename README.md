@@ -85,7 +85,7 @@
 
 | Icon | Project | Description | OS |
 |:---:|:---|:---|:---:|
-| `📖` | [**libft**](https://github.com/SegMind25/42Cursus/tree/main/libft) | Essential C functions library replication | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| `📖` | [**libft**](https://github.com/SegMind25/42Cursus/tree/main/libft) | Essential C functions library replication | <img width="20" src="[https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d](https://raw.githubusercontent.com/JotaRandom/archlinux-artwork/a9029989166ef42e10251f9d0f0fd09e60be2f31/logos/archlinux-vert-light-grad1.svg)"> |
 | | **Milestone 0** | | |
 | `🐧` | [**born2beRoot**](https://github.com/SegMind25/42Cursus/tree/main/Born2beRoot) | Configure a secure Linux VM with services | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
 | `🖨️` | [**ft_printf**](https://github.com/SegMind25/42Cursus/tree/main/ft_printf) | Reimplement `printf` from scratch in C | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
