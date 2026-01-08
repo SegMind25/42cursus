@@ -61,19 +61,19 @@ The 42 Common Core is an intensive, self-taught, project-based curriculum focuse
     <td></td>
     <td></td>
     <td align="center">
-[**`rank02`**](https://github.com/iodx2004/42-Exams/tree/main/rank02)
+[**`rank02`**]()
     </td>
     <td align="center">
-[**`rank03`**](https://github.com/iodx2004/42-Exams-rank03)
+[**`rank03`**]()
     </td>
     <td align="center">
-[**`rank04`**](https://github.com/iodx2004/42-exams-rank04)
+[**`rank04`**]()
     </td>
     <td align="center">
-[**`rank05`**](https://github.com/iodx2004/42-exams-rank05)
+[**`rank05`**]()
     </td>
     <td align="center">
-[**`rank06`**](https://github.com/iodx2004/42-exams-rank06)
+[**`rank06`**]()
     </td>
   </tr>
 </table>
@@ -96,13 +96,13 @@ The 42 Common Core is an intensive, self-taught, project-based curriculum focuse
 | `🔢` | [**push_swap**](https://github.com/iodx2004/42Cursus/tree/main/push_swap) | Optimize sorting with minimal stack operations | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
 | `🌀` | [**fractol**](https://github.com/iodx2004/42Cursus/tree/main/fractol) | Render Mandelbrot, Julia, and other fractals | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
 | `🧪` | [**pipex**](https://github.com/iodx2004/42Cursus/tree/main/pipex) | Replicate shell pipe behavior with `fork`/`pipe` | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
-| `🔖` | [**rank02**](https://github.com/iodx2004/42-Exams/tree/main/rank02) | Exam: reimplement core C functions under time | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🔖` | [**rank02**]() | Exam: reimplement core C functions under time | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | | **Milestone 2** | | |
-| `🔖` | [**rank03**](https://github.com/iodx2004/42-Exams-rank03) | Exam: random assignment (`printf`, `gnl`, etc.) | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🔖` | [**rank03**]() | Exam: random assignment (`printf`, `gnl`, etc.) | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | `🍽️` | [**philosophers**](https://github.com/iodx2004/42Cursus/tree/main/philosophers) | Solve dining philosophers with threads | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | `📦` | [**minishell**](https://github.com/iodx2004/42Cursus/tree/main/minishell) | Build a POSIX-compliant shell | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | | **Milestone 3** | | |
-| `🔖` | [**rank04**](https://github.com/iodx2004/42-exams-rank04) | Exam: develop a minimal shell | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🔖` | [**rank04**]() | Exam: develop a minimal shell | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | `🎮` | [**cub3D**](https://github.com/iodx2004/42Cursus/tree/main/cub3D) | Wolfenstein-style raycasting engine | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | `🌐` | [**netpractice**](https://github.com/iodx2004/42Cursus/tree/main/netpractice) | Hands-on networking: routing, DNS, firewall | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | `🏗️` | [**cpp0-4**](https://github.com/iodx2004/42Cursus/tree/main/cpp0-4) | C++ fundamentals: OOP, RAII, basic STL | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
@@ -110,10 +110,10 @@ The 42 Common Core is an intensive, self-taught, project-based curriculum focuse
 | `🧩` | [**inception**](https://github.com/iodx2004/42Cursus/tree/main/inception) | Deploy full web stack using Docker | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | `💬` | [**ft_irc**](https://github.com/iodx2004/42Cursus/tree/main/ft_irc) | Multi-user IRC server with protocol support | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | `🏗️` | [**cpp5-9**](https://github.com/iodx2004/42Cursus/tree/main/cpp5-9) | Advanced C++: templates, STL, algorithms | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
-| `🔖` | [**rank05**](https://github.com/iodx2004/42-exams-rank05) | Final C/C++ systems programming exam | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🔖` | [**rank05**]() | Final C/C++ systems programming exam | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | | **Milestone 5** | | |
 | `🕹️` | [**transcendence**](https://github.com/iodx2004/42Cursus/tree/main/transcendence) | Real-time 2D multiplayer Pong with web stack | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
-| `🔖` | [**rank06**](https://github.com/iodx2004/42-exams-rank06) | Advanced defense & architecture exam | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
+| `🔖` | [**rank06**]() | Advanced defense & architecture exam | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 
 </div>
 
