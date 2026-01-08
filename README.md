@@ -87,13 +87,13 @@
 |:---:|:---|:---|:---:|
 | `📖` | [**libft**](https://github.com/SegMind25/42Cursus/tree/main/libft) | Essential C functions library replication | <img width="20" src="https://icon.icepanel.io/Technology/svg/Arch-Linux.svg"> |
 | | **Milestone 0** | | |
-| `🐧` | [**born2beRoot**](https://github.com/SegMind25/42Cursus/tree/main/Born2beRoot) | Configure a secure Linux VM with services | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
-| `🖨️` | [**ft_printf**](https://github.com/SegMind25/42Cursus/tree/main/ft_printf) | Reimplement `printf` from scratch in C | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
-| `📝` | [**get_next_line**](https://github.com/SegMind25/42Cursus/tree/main/get_next_line) | Read input line by line using file descriptors | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| `🐧` | [**born2beRoot**](https://github.com/SegMind25/42Cursus/tree/main/Born2beRoot) | Configure a secure Linux VM with services | <img width="20" src="https://icon.icepanel.io/Technology/svg/Arch-Linux.svg"> |
+| `🖨️` | [**ft_printf**](https://github.com/SegMind25/42Cursus/tree/main/ft_printf) | Reimplement `printf` from scratch in C | <img width="20" src="https://icon.icepanel.io/Technology/svg/Arch-Linux.svg"> |
+| `📝` | [**get_next_line**](https://github.com/SegMind25/42Cursus/tree/main/get_next_line) | Read input line by line using file descriptors | <img width="20" src="https://icon.icepanel.io/Technology/svg/Arch-Linux.svg"> |
 | | **Milestone 1** | | |
-| `🔢` | [**push_swap**](https://github.com/SegMind25/42Cursus/tree/main/push_swap) | Optimize sorting with minimal stack operations | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
-| `🌀` | [**fractol**](https://github.com/SegMind25/42Cursus/tree/main/fractol) | Render Mandelbrot, Julia, and other fractals | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
-| `🧪` | [**pipex**](https://github.com/SegMind25/42Cursus/tree/main/pipex) | Replicate shell pipe behavior with `fork`/`pipe` | <img width="20" src="https://github.com/user-attachments/assets/e728727c-b38b-48b8-92ad-b7006445f64d"> |
+| `🔢` | [**push_swap**](https://github.com/SegMind25/42Cursus/tree/main/push_swap) | Optimize sorting with minimal stack operations | <img width="20" src="https://icon.icepanel.io/Technology/svg/Arch-Linux.svg"> |
+| `🌀` | [**fractol**](https://github.com/SegMind25/42Cursus/tree/main/fractol) | Render Mandelbrot, Julia, and other fractals | <img width="20" src="https://icon.icepanel.io/Technology/svg/Arch-Linux.svg"> |
+| `🧪` | [**pipex**](https://github.com/SegMind25/42Cursus/tree/main/pipex) | Replicate shell pipe behavior with `fork`/`pipe` | <img width="20" src="https://icon.icepanel.io/Technology/svg/Arch-Linux.svg"> |
 | `🔖` | [**rank02**]() | Exam: reimplement core C functions under time | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
 | | **Milestone 2** | | |
 | `🔖` | [**rank03**]() | Exam: random assignment (`printf`, `gnl`, etc.) | <img width="20" src="https://github.com/user-attachments/assets/a8c3a3ed-deb0-48a8-a12e-7ecdb5b7d164"> |
