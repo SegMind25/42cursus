@@ -118,3 +118,7 @@
 <div align="left">
 This repository reflects my journey through the 42 Common Core — built with patience, discipline, and zero AI-generated code.
 </div>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=SegMind25/42cursus&type=date&legend=top-left)](https://www.star-history.com/#SegMind25/42cursus&type=date&legend=top-left)
