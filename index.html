@@ -357,32 +357,6 @@
         .btn-secondary:hover {
             background: rgba(0, 186, 188, 0.1);
         }
-        /* Stats Dashboard */
-        .stats-dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        .dashboard-card {
-            background: var(--surface);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        .dashboard-card h3 {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .dashboard-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
         /* Filter Section */
         .filter-section {
             background: var(--surface);
@@ -429,6 +403,7 @@
             justify-content: center;
             gap: 2rem;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
         .footer-links a {
             color: var(--primary);
@@ -452,9 +427,6 @@
                 justify-content: space-around;
             }
             .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-dashboard {
                 grid-template-columns: 1fr;
             }
         }
@@ -505,6 +477,7 @@
             </div>
         </div>
     </header>
+
     <nav>
         <div class="container">
             <ul class="nav-links">
@@ -518,6 +491,7 @@
             </ul>
         </div>
     </nav>
+
     <main>
         <div class="container">
             <div class="filter-section">
@@ -535,8 +509,9 @@
                     <option value="name">Name</option>
                 </select>
             </div>
+
             <!-- Milestone 0 -->
-            <section class="milestone-section" id="milestone0">
+            <section class="milestone-section" id="milestone0" data-milestone="0">
                 <div class="milestone-header">
                     <div class="milestone-number">M0</div>
                     <div class="milestone-info">
@@ -550,13 +525,13 @@
                     </div>
                 </div>
                 <div class="projects-grid">
-                    <div class="project-card" data-status="in-progress">
+                    <div class="project-card" data-status="not-started" data-project-id="libft">
                         <div class="project-header">
                             <div class="project-title">
                                 <span class="project-icon">📖</span>
                                 <h3>libft</h3>
                             </div>
-                            <span class="status-badge status-in-progress">In Progress</span>
+                            <span class="status-badge status-not-started">Not Started</span>
                         </div>
                         <p class="project-description">Essential C functions library replication - building your own standard library from scratch</p>
                         <div class="project-meta">
@@ -572,54 +547,54 @@
                         <div class="tasks-section">
                             <div class="tasks-header">
                                 <h4>To-Do List</h4>
-                                <span style="font-size: 0.85rem; color: var(--primary);">0/12 Tasks</span>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/12 Tasks</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-1"></div>
                                 <span class="task-text">Implement string manipulation functions (strlen, strcpy, strcmp)</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-2"></div>
                                 <span class="task-text">Memory functions (memset, memcpy, memmove)</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-3"></div>
                                 <span class="task-text">Character validation (isalpha, isdigit, isascii)</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-4"></div>
                                 <span class="task-text">Conversion functions (atoi, itoa)</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-5"></div>
                                 <span class="task-text">Linked list operations</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-6"></div>
                                 <span class="task-text">Advanced string functions (split, join, trim)</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-7"></div>
                                 <span class="task-text">File descriptor functions (putchar_fd, putstr_fd)</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-8"></div>
                                 <span class="task-text">Bonus: Additional list manipulation functions</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-9"></div>
                                 <span class="task-text">Create comprehensive Makefile</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-10"></div>
                                 <span class="task-text">Write unit tests for all functions</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-11"></div>
                                 <span class="task-text">Memory leak testing with valgrind</span>
                             </div>
                             <div class="task-item">
-                                <div class="task-checkbox"></div>
+                                <div class="task-checkbox" data-task-id="libft-task-12"></div>
                                 <span class="task-text">Submit for peer evaluation</span>
                             </div>
                         </div>
@@ -627,17 +602,1393 @@
                             <a href="https://github.com/SegMind25/42Cursus/tree/main/libft" class="btn btn-primary" target="_blank">
                                 <span>📁</span> View Code
                             </a>
-                            <button class="btn btn-secondary">
-                                <span>📝</span> Add Task
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
                             </button>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- Remaining milestones same as original... Due to length, I'm keeping the structure -->
-            <!-- You would include all the other milestone sections here exactly as in your original code -->
+
+            <!-- Milestone 1 -->
+            <section class="milestone-section" id="milestone1" data-milestone="1">
+                <div class="milestone-header">
+                    <div class="milestone-number">M1</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 1 - System Programming</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started" data-project-id="born2beroot">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🐧</span>
+                                <h3>born2beRoot</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Configure a secure Linux VM with essential services and strict security policies</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 40 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/10 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-1"></div>
+                                <span class="task-text">Install Debian/Rocky Linux in VirtualBox</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-2"></div>
+                                <span class="task-text">Configure LVM partitioning</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-3"></div>
+                                <span class="task-text">Set up SSH service on custom port</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-4"></div>
+                                <span class="task-text">Configure UFW firewall rules</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-5"></div>
+                                <span class="task-text">Implement strong password policy</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-6"></div>
+                                <span class="task-text">Configure sudo with strict rules</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-7"></div>
+                                <span class="task-text">Create monitoring script (monitoring.sh)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-8"></div>
+                                <span class="task-text">Set up cron job for monitoring</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-9"></div>
+                                <span class="task-text">Prepare defense documentation</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="born2beroot-task-10"></div>
+                                <span class="task-text">Bonus: Set up WordPress with lighttpd/nginx</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/Born2beRoot" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="ft_printf">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🖨️</span>
+                                <h3>ft_printf</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Reimplement the printf function from scratch with variadic arguments</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 50 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/9 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-1"></div>
+                                <span class="task-text">Study variadic functions (va_start, va_arg, va_end)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-2"></div>
+                                <span class="task-text">Implement %c (character) conversion</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-3"></div>
+                                <span class="task-text">Implement %s (string) conversion</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-4"></div>
+                                <span class="task-text">Implement %d and %i (integer) conversions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-5"></div>
+                                <span class="task-text">Implement %u (unsigned int) conversion</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-6"></div>
+                                <span class="task-text">Implement %x and %X (hexadecimal) conversions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-7"></div>
+                                <span class="task-text">Implement %p (pointer address) conversion</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-8"></div>
+                                <span class="task-text">Handle %% (literal percent sign)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_printf-task-9"></div>
+                                <span class="task-text">Test against original printf behavior</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/ft_printf" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="get_next_line">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">📝</span>
+                                <h3>get_next_line</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Read input line by line from file descriptors with buffer management</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 40 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/8 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="get_next_line-task-1"></div>
+                                <span class="task-text">Understand file descriptors and read() function</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="get_next_line-task-2"></div>
+                                <span class="task-text">Design static buffer management system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="get_next_line-task-3"></div>
+                                <span class="task-text">Implement line extraction logic</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="get_next_line-task-4"></div>
+                                <span class="task-text">Handle newline character detection</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="get_next_line-task-5"></div>
+                                <span class="task-text">Handle EOF (End Of File) properly</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="get_next_line-task-6"></div>
+                                <span class="task-text">Test with different BUFFER_SIZE values</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="get_next_line-task-7"></div>
+                                <span class="task-text">Bonus: Handle multiple file descriptors simultaneously</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="get_next_line-task-8"></div>
+                                <span class="task-text">Memory leak testing</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/get_next_line" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Remaining milestones continue here with the same structure... -->
+            <!-- For brevity, I'm including just the headers. You would add all projects similarly -->
+
+            <section class="milestone-section" id="milestone2" data-milestone="2">
+                <div class="milestone-header">
+                    <div class="milestone-number">M2</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 2 - Algorithms & Graphics</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started" data-project-id="push_swap">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🔢</span>
+                                <h3>push_swap</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Optimize sorting algorithms using two stacks with minimal operations</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 60 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/11 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-1"></div>
+                                <span class="task-text">Study sorting algorithms (quicksort, radix sort)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-2"></div>
+                                <span class="task-text">Implement stack data structure</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-3"></div>
+                                <span class="task-text">Implement stack operations (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-4"></div>
+                                <span class="task-text">Design sorting algorithm for 3 numbers</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-5"></div>
+                                <span class="task-text">Design sorting algorithm for 5 numbers</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-6"></div>
+                                <span class="task-text">Implement main sorting algorithm (100-500 numbers)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-7"></div>
+                                <span class="task-text">Optimize move count (target: <700 for 100, <5500 for 500)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-8"></div>
+                                <span class="task-text">Handle error cases and input validation</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-9"></div>
+                                <span class="task-text">Bonus: Create checker program</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-10"></div>
+                                <span class="task-text">Test with various input sizes</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="push_swap-task-11"></div>
+                                <span class="task-text">Benchmark and optimize performance</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/push_swap" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="fractol">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🌀</span>
+                                <h3>fractol</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Render beautiful fractals (Mandelbrot, Julia) with interactive controls</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 60 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/10 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-1"></div>
+                                <span class="task-text">Learn MiniLibX graphics library</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-2"></div>
+                                <span class="task-text">Study fractal mathematics (complex numbers)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-3"></div>
+                                <span class="task-text">Implement Mandelbrot set rendering</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-4"></div>
+                                <span class="task-text">Implement Julia set rendering</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-5"></div>
+                                <span class="task-text">Add zoom functionality (mouse wheel)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-6"></div>
+                                <span class="task-text">Add pan functionality (arrow keys/mouse)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-7"></div>
+                                <span class="task-text">Implement color palette system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-8"></div>
+                                <span class="task-text">Add iteration control</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-9"></div>
+                                <span class="task-text">Bonus: Add third fractal type (Burning Ship)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="fractol-task-10"></div>
+                                <span class="task-text">Optimize rendering performance</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/fractol" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="pipex">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🧪</span>
+                                <h3>pipex</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Replicate shell pipe behavior using fork, pipe, and exec</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 50 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/9 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-1"></div>
+                                <span class="task-text">Study process creation (fork)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-2"></div>
+                                <span class="task-text">Study inter-process communication (pipe)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-3"></div>
+                                <span class="task-text">Study process replacement (execve)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-4"></div>
+                                <span class="task-text">Implement file handling and validation</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-5"></div>
+                                <span class="task-text">Implement command parsing and PATH resolution</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-6"></div>
+                                <span class="task-text">Create child processes with fork</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-7"></div>
+                                <span class="task-text">Connect processes with pipes</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-8"></div>
+                                <span class="task-text">Handle errors and edge cases</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="pipex-task-9"></div>
+                                <span class="task-text">Bonus: Handle here_doc and multiple pipes</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/pipex" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="milestone-section" id="milestone3" data-milestone="3">
+                <div class="milestone-header">
+                    <div class="milestone-number">M3</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 3 - Concurrency & Shell</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started" data-project-id="philosophers">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🍽️</span>
+                                <h3>philosophers</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Solve the dining philosophers problem using threads and mutexes</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 70 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/12 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-1"></div>
+                                <span class="task-text">Study threading concepts (pthread_create, pthread_join)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-2"></div>
+                                <span class="task-text">Study mutex operations (pthread_mutex_lock, unlock)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-3"></div>
+                                <span class="task-text">Understand the dining philosophers problem</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-4"></div>
+                                <span class="task-text">Design philosopher lifecycle (eat, sleep, think)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-5"></div>
+                                <span class="task-text">Implement thread creation for each philosopher</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-6"></div>
+                                <span class="task-text">Implement fork (mutex) allocation system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-7"></div>
+                                <span class="task-text">Implement precise timing with usleep/gettimeofday</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-8"></div>
+                                <span class="task-text">Prevent deadlocks and race conditions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-9"></div>
+                                <span class="task-text">Implement death detection system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-10"></div>
+                                <span class="task-text">Add logging with timestamps</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-11"></div>
+                                <span class="task-text">Test with various parameters (edge cases)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="philosophers-task-12"></div>
+                                <span class="task-text">Bonus: Implement semaphore version</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/philosophers" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="minishell">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">📦</span>
+                                <h3>minishell</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Build a fully functional POSIX-compliant shell like bash</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 210 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Very Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/15 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-1"></div>
+                                <span class="task-text">Set up readline library for interactive prompt</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-2"></div>
+                                <span class="task-text">Implement lexer (tokenization)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-3"></div>
+                                <span class="task-text">Implement parser (syntax analysis)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-4"></div>
+                                <span class="task-text">Handle quotes (single and double)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-5"></div>
+                                <span class="task-text">Implement environment variable expansion ($VAR)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-6"></div>
+                                <span class="task-text">Implement redirections (<, >, <<, >>)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-7"></div>
+                                <span class="task-text">Implement pipes (|)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-8"></div>
+                                <span class="task-text">Implement built-ins (echo, cd, pwd, export, unset, env, exit)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-9"></div>
+                                <span class="task-text">Implement command execution with PATH resolution</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-10"></div>
+                                <span class="task-text">Handle exit status ($?)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-11"></div>
+                                <span class="task-text">Implement signal handling (Ctrl-C, Ctrl-D, Ctrl-\)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-12"></div>
+                                <span class="task-text">Handle heredoc (<<)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-13"></div>
+                                <span class="task-text">Test with complex command combinations</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-14"></div>
+                                <span class="task-text">Memory leak testing and cleanup</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="minishell-task-15"></div>
+                                <span class="task-text">Bonus: Implement logical operators (&& and ||)</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/minishell" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="milestone-section" id="milestone4" data-milestone="4">
+                <div class="milestone-header">
+                    <div class="milestone-number">M4</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 4 - Graphics & C++</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started" data-project-id="netpractice">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🌐</span>
+                                <h3>netpractice</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Hands-on networking practice: TCP/IP, routing, subnetting, and DNS</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 50 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/10 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-1"></div>
+                                <span class="task-text">Study TCP/IP protocol fundamentals</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-2"></div>
+                                <span class="task-text">Learn IP addressing and subnet masks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-3"></div>
+                                <span class="task-text">Understand routing tables and default gateways</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-4"></div>
+                                <span class="task-text">Practice subnetting calculations</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-5"></div>
+                                <span class="task-text">Complete Level 1-3 exercises</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-6"></div>
+                                <span class="task-text">Complete Level 4-6 exercises</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-7"></div>
+                                <span class="task-text">Complete Level 7-9 exercises</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-8"></div>
+                                <span class="task-text">Complete Level 10 (final challenge)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-9"></div>
+                                <span class="task-text">Practice with online subnet calculators</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="netpractice-task-10"></div>
+                                <span class="task-text">Review and master all networking concepts</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/netpractice" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="cub3d">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🎮</span>
+                                <h3>cub3D</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Build a Wolfenstein 3D-style raycasting engine with textured walls</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 280 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Very Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/14 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-1"></div>
+                                <span class="task-text">Study raycasting algorithm theory</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-2"></div>
+                                <span class="task-text">Implement map parser (.cub file format)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-3"></div>
+                                <span class="task-text">Validate map (closed walls, valid characters)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-4"></div>
+                                <span class="task-text">Load textures (XPM files)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-5"></div>
+                                <span class="task-text">Implement player movement (WASD)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-6"></div>
+                                <span class="task-text">Implement player rotation (arrow keys/mouse)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-7"></div>
+                                <span class="task-text">Implement raycasting core algorithm</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-8"></div>
+                                <span class="task-text">Calculate wall distances and heights</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-9"></div>
+                                <span class="task-text">Apply textures to walls</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-10"></div>
+                                <span class="task-text">Render floor and ceiling colors</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-11"></div>
+                                <span class="task-text">Handle collisions with walls</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-12"></div>
+                                <span class="task-text">Implement smooth rendering (optimize FPS)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-13"></div>
+                                <span class="task-text">Add minimap display</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cub3d-task-14"></div>
+                                <span class="task-text">Bonus: Add sprites, doors, or mouse rotation</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/cub3D" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="cpp0-4">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🏗️</span>
+                                <h3>cpp0-4</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">C++ fundamentals: OOP, classes, inheritance, polymorphism, and RAII</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 100 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/13 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-1"></div>
+                                <span class="task-text">CPP00: Learn namespaces, classes, member functions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-2"></div>
+                                <span class="task-text">CPP00: Understand stdio streams, initialization lists</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-3"></div>
+                                <span class="task-text">CPP01: Master memory allocation (new/delete)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-4"></div>
+                                <span class="task-text">CPP01: Learn references vs pointers</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-5"></div>
+                                <span class="task-text">CPP01: Implement file stream operations</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-6"></div>
+                                <span class="task-text">CPP02: Study Orthodox Canonical Form</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-7"></div>
+                                <span class="task-text">CPP02: Implement fixed-point numbers</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-8"></div>
+                                <span class="task-text">CPP03: Learn inheritance and derived classes</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-9"></div>
+                                <span class="task-text">CPP03: Implement ClapTrap/ScavTrap/FragTrap</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-10"></div>
+                                <span class="task-text">CPP04: Master polymorphism and virtual functions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-11"></div>
+                                <span class="task-text">CPP04: Implement abstract classes and interfaces</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-12"></div>
+                                <span class="task-text">Complete all exercises for modules 0-4</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp0-4-task-13"></div>
+                                <span class="task-text">Pass all module evaluations</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/cpp0-4" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="milestone-section" id="milestone5" data-milestone="5">
+                <div class="milestone-header">
+                    <div class="milestone-number">M5</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 5 - DevOps & Networking</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started" data-project-id="ft_irc">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">💬</span>
+                                <h3>ft_irc</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Build a multi-user IRC server with full protocol support</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 175 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Very Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/14 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-1"></div>
+                                <span class="task-text">Study IRC protocol (RFC 1459, RFC 2812)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-2"></div>
+                                <span class="task-text">Learn socket programming (TCP/IP)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-3"></div>
+                                <span class="task-text">Implement server socket creation and binding</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-4"></div>
+                                <span class="task-text">Handle multiple clients with poll/select</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-5"></div>
+                                <span class="task-text">Implement authentication (PASS, NICK, USER)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-6"></div>
+                                <span class="task-text">Implement channel operations (JOIN, PART, TOPIC)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-7"></div>
+                                <span class="task-text">Implement messaging (PRIVMSG, NOTICE)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-8"></div>
+                                <span class="task-text">Implement channel modes (o, k, l, i, t)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-9"></div>
+                                <span class="task-text">Implement operator commands (KICK, INVITE, MODE)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-10"></div>
+                                <span class="task-text">Handle disconnections and errors gracefully</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-11"></div>
+                                <span class="task-text">Implement file transfer (DCC) - bonus</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-12"></div>
+                                <span class="task-text">Add bot functionality - bonus</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-13"></div>
+                                <span class="task-text">Test with real IRC clients (irssi, hexchat)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="ft_irc-task-14"></div>
+                                <span class="task-text">Stress test with multiple simultaneous connections</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/ft_irc" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="inception">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🧩</span>
+                                <h3>inception</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Deploy a complete web infrastructure using Docker containers</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 210 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Very Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/15 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-1"></div>
+                                <span class="task-text">Study Docker fundamentals (containers, images, volumes)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-2"></div>
+                                <span class="task-text">Learn docker-compose for orchestration</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-3"></div>
+                                <span class="task-text">Set up virtual machine with Docker</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-4"></div>
+                                <span class="task-text">Create NGINX container with TLSv1.3</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-5"></div>
+                                <span class="task-text">Create WordPress + php-fpm container</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-6"></div>
+                                <span class="task-text">Create MariaDB container with database</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-7"></div>
+                                <span class="task-text">Set up Docker volumes for persistence</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-8"></div>
+                                <span class="task-text">Create custom Docker network</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-9"></div>
+                                <span class="task-text">Write Dockerfiles (no ready-made images)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-10"></div>
+                                <span class="task-text">Configure environment variables (.env)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-11"></div>
+                                <span class="task-text">Set up domain name (login.42.fr)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-12"></div>
+                                <span class="task-text">Implement container restart policies</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-13"></div>
+                                <span class="task-text">Bonus: Add Redis cache, FTP server, or static site</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-14"></div>
+                                <span class="task-text">Test complete infrastructure deployment</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="inception-task-15"></div>
+                                <span class="task-text">Write comprehensive documentation</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/inception" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started" data-project-id="cpp5-9">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🏗️</span>
+                                <h3>cpp5-9</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Advanced C++: templates, STL containers, iterators, and algorithms</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 100 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/13 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-1"></div>
+                                <span class="task-text">CPP05: Master try/catch exception handling</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-2"></div>
+                                <span class="task-text">CPP05: Implement bureaucrat and forms</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-3"></div>
+                                <span class="task-text">CPP06: Learn static_cast, dynamic_cast, reinterpret_cast</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-4"></div>
+                                <span class="task-text">CPP06: Implement scalar type conversions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-5"></div>
+                                <span class="task-text">CPP07: Master function templates</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-6"></div>
+                                <span class="task-text">CPP07: Implement class templates</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-7"></div>
+                                <span class="task-text">CPP08: Study STL containers (vector, stack, list)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-8"></div>
+                                <span class="task-text">CPP08: Implement custom iterators</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-9"></div>
+                                <span class="task-text">CPP09: Master STL algorithms (sort, find, etc.)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-10"></div>
+                                <span class="task-text">CPP09: Implement Bitcoin exchange database</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-11"></div>
+                                <span class="task-text">CPP09: Implement RPN calculator</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-12"></div>
+                                <span class="task-text">Complete all exercises for modules 5-9</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="cpp5-9-task-13"></div>
+                                <span class="task-text">Pass all module evaluations</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/cpp5-9" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="milestone-section" id="milestone6" data-milestone="6">
+                <div class="milestone-header">
+                    <div class="milestone-number">M6</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 6 - Final Project</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started" data-project-id="transcendence">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🕹️</span>
+                                <h3>transcendence</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Real-time multiplayer Pong game with full web stack (frontend, backend, database)</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 300+ hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Extreme</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span class="task-counter" style="font-size: 0.85rem; color: var(--primary);">0/20 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-1"></div>
+                                <span class="task-text">Choose tech stack (Django/NestJS/Rails backend)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-2"></div>
+                                <span class="task-text">Set up project structure and version control</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-3"></div>
+                                <span class="task-text">Implement user authentication system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-4"></div>
+                                <span class="task-text">Add OAuth integration (42 API)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-5"></div>
+                                <span class="task-text">Design and implement database schema</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-6"></div>
+                                <span class="task-text">Create user profile management system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-7"></div>
+                                <span class="task-text">Implement Pong game engine (Canvas/WebGL)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-8"></div>
+                                <span class="task-text">Add real-time multiplayer with WebSockets</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-9"></div>
+                                <span class="task-text">Implement matchmaking system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-10"></div>
+                                <span class="task-text">Create chat system (channels, DMs)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-11"></div>
+                                <span class="task-text">Add friends/block system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-12"></div>
+                                <span class="task-text">Implement game history and statistics</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-13"></div>
+                                <span class="task-text">Create leaderboard and ranking system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-14"></div>
+                                <span class="task-text">Add tournament system - Major Module</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-15"></div>
+                                <span class="task-text">Implement 2FA security - Major Module</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-16"></div>
+                                <span class="task-text">Add AI opponent - Major Module</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-17"></div>
+                                <span class="task-text">Implement responsive design (mobile support)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-18"></div>
+                                <span class="task-text">Add advanced 3D graphics - Major Module</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-19"></div>
+                                <span class="task-text">Deploy with Docker/Kubernetes</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox" data-task-id="transcendence-task-20"></div>
+                                <span class="task-text">Complete all major modules (7+ required)</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/transcendence" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary start-project-btn">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Congratulations Card -->
+                    <div class="project-card" style="background: linear-gradient(135deg, rgba(0, 186, 188, 0.1), rgba(139, 92, 246, 0.1)); border: 2px solid var(--primary);">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">🎓</div>
+                            <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary);">Journey Complete!</h3>
+                            <p style="color: var(--text); line-height: 1.8;">
+                                Upon completing transcendence, you will have mastered the 42 Common Core curriculum.
+                                This journey represents hundreds of hours of dedication, problem-solving, and growth.
+                            </p>
+                            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--surface); border-radius: 8px;">
+                                <p style="color: var(--text-muted); font-style: italic;">
+                                    "The only way to do great work is to love what you do."
+                                </p>
+                                <p style="color: var(--primary); margin-top: 0.5rem; font-weight: 600;">
+                                    - Steve Jobs
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -647,72 +1998,74 @@
                     <a href="https://github.com/SegMind25/42cursus" target="_blank">GitHub Repository</a>
                     <a href="#" target="_blank">Intra Profile</a>
                     <a href="#" target="_blank">Progress Dashboard</a>
+                    <a href="#" id="resetProgressBtn" style="color: var(--danger);">Reset Progress</a>
                 </div>
             </div>
         </div>
     </footer>
+
     <script>
-        // FIXED: Progress persistence system using localStorage
-        const STORAGE_KEY = '42_cursus_progress';
+        // =====================================================
+        // CORE CONFIGURATION
+        // =====================================================
+        const STORAGE_KEY = '42_cursus_progress_v2';
+
+        // =====================================================
+        // PROGRESS MANAGEMENT SYSTEM
+        // =====================================================
         
-        // Generate unique IDs for tasks based on their content
-        function getTaskId(taskElement) {
-            const taskText = taskElement.querySelector('.task-text');
-            if (!taskText) return null;
-            // Create a simple hash from the task text
-            const text = taskText.textContent.trim();
-            return text.substring(0, 50).replace(/[^a-zA-Z0-9]/g, '_');
-        }
-        
-        // Generate unique IDs for projects based on their title
-        function getProjectId(projectCard) {
-            const titleElement = projectCard.querySelector('.project-title h3');
-            if (!titleElement) return null;
-            return titleElement.textContent.trim().toLowerCase().replace(/\s+/g, '_');
-        }
-        
-        // FIXED: Load saved progress from localStorage
+        /**
+         * Load saved progress from localStorage
+         * This runs on page load to restore all checked tasks and project statuses
+         */
         function loadProgress() {
             try {
-                const savedProgress = localStorage.getItem(STORAGE_KEY);
-                if (savedProgress) {
-                    const progress = JSON.parse(savedProgress);
-                    console.log('Loading progress:', progress);
-                    
-                    // Restore checkbox states using content-based IDs
-                    document.querySelectorAll('.task-item').forEach(taskItem => {
-                        const taskId = getTaskId(taskItem);
-                        if (taskId && progress.tasks && progress.tasks[taskId]) {
-                            const checkbox = taskItem.querySelector('.task-checkbox');
-                            const taskText = taskItem.querySelector('.task-text');
-                            if (checkbox && taskText) {
+                const savedData = localStorage.getItem(STORAGE_KEY);
+                if (!savedData) {
+                    console.log('No saved progress found - starting fresh');
+                    return;
+                }
+
+                const progress = JSON.parse(savedData);
+                console.log('Loading progress:', progress);
+
+                // Restore all checked tasks
+                if (progress.tasks) {
+                    Object.keys(progress.tasks).forEach(taskId => {
+                        if (progress.tasks[taskId]) {
+                            const checkbox = document.querySelector(`[data-task-id="${taskId}"]`);
+                            if (checkbox) {
                                 checkbox.classList.add('checked');
-                                taskText.classList.add('completed');
+                                const taskText = checkbox.nextElementSibling;
+                                if (taskText) {
+                                    taskText.classList.add('completed');
+                                }
                             }
                         }
                     });
-                    
-                    // Restore project statuses
-                    if (progress.projects) {
-                        document.querySelectorAll('.project-card').forEach(card => {
-                            const projectId = getProjectId(card);
-                            if (projectId && progress.projects[projectId]) {
-                                const status = progress.projects[projectId];
-                                updateProjectStatus(card, status);
-                            }
-                        });
-                    }
-                    
-                    console.log('Progress loaded successfully');
-                    // Update all progress bars after loading
-                    updateAllProgress();
                 }
+
+                // Restore project statuses
+                if (progress.projects) {
+                    Object.keys(progress.projects).forEach(projectId => {
+                        const status = progress.projects[projectId];
+                        const projectCard = document.querySelector(`[data-project-id="${projectId}"]`);
+                        if (projectCard) {
+                            updateProjectStatus(projectCard, status);
+                        }
+                    });
+                }
+
+                console.log('Progress loaded successfully!');
             } catch (error) {
                 console.error('Error loading progress:', error);
             }
         }
-        
-        // FIXED: Save progress to localStorage
+
+        /**
+         * Save current progress to localStorage
+         * Stores all task states and project statuses
+         */
         function saveProgress() {
             try {
                 const progress = {
@@ -720,143 +2073,118 @@
                     projects: {},
                     lastUpdated: new Date().toISOString()
                 };
-                
-                // Save checkbox states using content-based IDs
-                document.querySelectorAll('.task-item').forEach(taskItem => {
-                    const taskId = getTaskId(taskItem);
-                    const checkbox = taskItem.querySelector('.task-checkbox');
-                    if (taskId && checkbox) {
-                        progress.tasks[taskId] = checkbox.classList.contains('checked');
-                    }
+
+                // Save all task checkbox states
+                document.querySelectorAll('[data-task-id]').forEach(checkbox => {
+                    const taskId = checkbox.getAttribute('data-task-id');
+                    progress.tasks[taskId] = checkbox.classList.contains('checked');
                 });
-                
-                // Save project statuses
-                document.querySelectorAll('.project-card').forEach(card => {
-                    const projectId = getProjectId(card);
-                    if (projectId) {
-                        progress.projects[projectId] = card.dataset.status || 'not-started';
-                    }
+
+                // Save all project statuses
+                document.querySelectorAll('[data-project-id]').forEach(card => {
+                    const projectId = card.getAttribute('data-project-id');
+                    progress.projects[projectId] = card.getAttribute('data-status');
                 });
-                
+
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-                console.log('Progress saved successfully:', progress);
+                console.log('Progress saved!');
             } catch (error) {
                 console.error('Error saving progress:', error);
             }
         }
-        
-        // Clear all progress (for reset functionality)
-        function clearProgress() {
-            if (confirm('Are you sure you want to reset ALL progress? This cannot be undone!')) {
+
+        /**
+         * Clear all progress and reload page
+         */
+        function resetProgress() {
+            if (confirm('⚠️ Are you sure you want to reset ALL progress?\n\nThis will delete all your checked tasks and project statuses.\n\nThis action CANNOT be undone!')) {
                 localStorage.removeItem(STORAGE_KEY);
+                alert('✅ Progress has been reset! The page will now reload.');
                 location.reload();
             }
         }
-        
-        // FIXED: Update all progress bars and statistics
-        function updateAllProgress() {
-            updateMilestoneProgress();
-            updateProjectProgress();
-        }
-        
-        // FIXED: Update milestone progress bars
-        function updateMilestoneProgress() {
-            const milestones = document.querySelectorAll('.milestone-section');
-            
-            milestones.forEach(milestone => {
-                const projectCards = milestone.querySelectorAll('.project-card');
-                
-                let totalTasks = 0;
-                let completedTasks = 0;
-                
-                projectCards.forEach(card => {
-                    const tasks = card.querySelectorAll('.task-checkbox');
-                    const checkedTasks = card.querySelectorAll('.task-checkbox.checked');
-                    
-                    totalTasks += tasks.length;
-                    completedTasks += checkedTasks.length;
-                });
-                
-                // Calculate progress percentage based on tasks
-                const progressPercent = totalTasks > 0 
-                    ? Math.round((completedTasks / totalTasks) * 100) 
-                    : 0;
-                
-                // Update progress bar
-                const progressBar = milestone.querySelector('.progress-fill');
-                const progressText = milestone.querySelector('.progress-text');
-                
-                if (progressBar) {
-                    progressBar.style.width = progressPercent + '%';
-                }
-                if (progressText) {
-                    progressText.textContent = progressPercent + '%';
-                }
-                
-                console.log(`Milestone ${milestone.id}: ${completedTasks}/${totalTasks} tasks (${progressPercent}%)`);
-            });
-        }
-        
-        // FIXED: Update overall project statistics
-        function updateProjectProgress() {
-            const allCards = document.querySelectorAll('.project-card');
-            const totalProjects = allCards.length;
-            
-            let completedProjects = 0;
+
+        // =====================================================
+        // PROGRESS CALCULATION FUNCTIONS
+        // =====================================================
+
+        /**
+         * Update milestone progress bar based on task completion
+         * Calculates percentage from completed vs total tasks in milestone
+         */
+        function updateMilestoneProgress(milestoneSection) {
+            const projectCards = milestoneSection.querySelectorAll('.project-card');
             let totalTasks = 0;
             let completedTasks = 0;
-            
-            allCards.forEach(card => {
-                const tasks = card.querySelectorAll('.task-checkbox');
-                const checkedTasks = card.querySelectorAll('.task-checkbox.checked');
-                const tasksHeader = card.querySelector('.tasks-header span');
-                
+
+            // Count all tasks in this milestone
+            projectCards.forEach(card => {
+                const tasks = card.querySelectorAll('[data-task-id]');
+                const checked = card.querySelectorAll('[data-task-id].checked');
                 totalTasks += tasks.length;
-                completedTasks += checkedTasks.length;
-                
-                // Update task counter in card
-                if (tasksHeader && tasks.length > 0) {
-                    tasksHeader.textContent = `${checkedTasks.length}/${tasks.length} Tasks`;
-                }
-                
-                // Determine project status based on completion
-                if (tasks.length > 0) {
-                    if (checkedTasks.length === tasks.length) {
-                        completedProjects++;
-                        updateProjectStatus(card, 'completed');
-                    } else if (checkedTasks.length > 0) {
-                        updateProjectStatus(card, 'in-progress');
-                    } else {
-                        updateProjectStatus(card, 'not-started');
-                    }
-                }
+                completedTasks += checked.length;
             });
+
+            // Calculate percentage
+            const percentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+            // Update UI
+            const progressFill = milestoneSection.querySelector('.progress-fill');
+            const progressText = milestoneSection.querySelector('.progress-text');
             
-            // Calculate overall progress
-            const overallProgress = totalTasks > 0 
-                ? Math.round((completedTasks / totalTasks) * 100) 
-                : 0;
-            
-            // Update header statistics
-            const totalProjectsEl = document.getElementById('totalProjects');
-            const completedProjectsEl = document.getElementById('completedProjects');
-            const overallProgressEl = document.getElementById('overallProgress');
-            
-            if (totalProjectsEl) totalProjectsEl.textContent = totalProjects;
-            if (completedProjectsEl) completedProjectsEl.textContent = completedProjects;
-            if (overallProgressEl) overallProgressEl.textContent = overallProgress + '%';
-            
-            console.log(`Overall: ${completedTasks}/${totalTasks} tasks (${overallProgress}%), ${completedProjects} projects completed`);
+            if (progressFill) {
+                progressFill.style.width = percentage + '%';
+            }
+            if (progressText) {
+                progressText.textContent = percentage + '%';
+            }
         }
-        
-        // Update project status badge
-        function updateProjectStatus(card, status) {
-            card.dataset.status = status;
-            const badge = card.querySelector('.status-badge');
+
+        /**
+         * Update all milestone progress bars
+         */
+        function updateAllMilestones() {
+            document.querySelectorAll('.milestone-section').forEach(section => {
+                updateMilestoneProgress(section);
+            });
+        }
+
+        /**
+         * Update task counter for a specific project card
+         */
+        function updateTaskCounter(projectCard) {
+            const tasks = projectCard.querySelectorAll('[data-task-id]');
+            const checked = projectCard.querySelectorAll('[data-task-id].checked');
+            const counter = projectCard.querySelector('.task-counter');
+            
+            if (counter) {
+                counter.textContent = `${checked.length}/${tasks.length} Tasks`;
+            }
+
+            // Update project status based on task completion
+            if (tasks.length > 0) {
+                if (checked.length === tasks.length) {
+                    updateProjectStatus(projectCard, 'completed');
+                } else if (checked.length > 0) {
+                    updateProjectStatus(projectCard, 'in-progress');
+                } else {
+                    updateProjectStatus(projectCard, 'not-started');
+                }
+            }
+        }
+
+        /**
+         * Update project status badge and data attribute
+         */
+        function updateProjectStatus(projectCard, status) {
+            projectCard.setAttribute('data-status', status);
+            const badge = projectCard.querySelector('.status-badge');
             
             if (badge) {
-                badge.className = 'status-badge';
+                // Remove all status classes
+                badge.classList.remove('status-completed', 'status-in-progress', 'status-not-started');
                 
+                // Add appropriate class and text
                 if (status === 'completed') {
                     badge.classList.add('status-completed');
                     badge.textContent = 'Completed';
@@ -869,122 +2197,201 @@
                 }
             }
         }
-        
-        // Interactive functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Initializing 42 Cursus Tracker...');
-            
-            // CRITICAL: Load saved progress FIRST
-            loadProgress();
-            
-            // Task checkbox functionality
-            const checkboxes = document.querySelectorAll('.task-checkbox');
-            checkboxes.forEach(checkbox => {
+
+        /**
+         * Update overall statistics in header
+         */
+        function updateOverallStats() {
+            const allProjects = document.querySelectorAll('[data-project-id]');
+            const totalProjects = allProjects.length;
+            let completedProjects = 0;
+            let totalTasks = 0;
+            let completedTasks = 0;
+
+            allProjects.forEach(card => {
+                const tasks = card.querySelectorAll('[data-task-id]');
+                const checked = card.querySelectorAll('[data-task-id].checked');
+                
+                totalTasks += tasks.length;
+                completedTasks += checked.length;
+
+                // Count completed projects
+                if (tasks.length > 0 && checked.length === tasks.length) {
+                    completedProjects++;
+                }
+            });
+
+            // Calculate overall progress
+            const overallProgress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+            // Update header stats
+            const totalEl = document.getElementById('totalProjects');
+            const completedEl = document.getElementById('completedProjects');
+            const progressEl = document.getElementById('overallProgress');
+
+            if (totalEl) totalEl.textContent = totalProjects;
+            if (completedEl) completedEl.textContent = completedProjects;
+            if (progressEl) progressEl.textContent = overallProgress + '%';
+        }
+
+        /**
+         * Update all progress indicators
+         */
+        function updateAllProgress() {
+            // Update individual project task counters
+            document.querySelectorAll('.project-card').forEach(card => {
+                updateTaskCounter(card);
+            });
+
+            // Update milestone progress bars
+            updateAllMilestones();
+
+            // Update overall statistics
+            updateOverallStats();
+        }
+
+        // =====================================================
+        // EVENT HANDLERS
+        // =====================================================
+
+        /**
+         * Initialize all event listeners
+         */
+        function initializeEventListeners() {
+            // Task checkbox click handler
+            document.querySelectorAll('[data-task-id]').forEach(checkbox => {
                 checkbox.addEventListener('click', function() {
+                    // Toggle checked state
                     this.classList.toggle('checked');
+                    
+                    // Toggle task text completion style
                     const taskText = this.nextElementSibling;
                     if (taskText) {
                         taskText.classList.toggle('completed');
                     }
+
+                    // Get parent project card
+                    const projectCard = this.closest('.project-card');
                     
-                    // Update progress and save
-                    updateAllProgress();
+                    // Update progress for this project
+                    if (projectCard) {
+                        updateTaskCounter(projectCard);
+                    }
+
+                    // Update parent milestone
+                    const milestone = this.closest('.milestone-section');
+                    if (milestone) {
+                        updateMilestoneProgress(milestone);
+                    }
+
+                    // Update overall stats
+                    updateOverallStats();
+
+                    // Save progress
                     saveProgress();
                 });
             });
-            
+
+            // Start Project button handler
+            document.querySelectorAll('.start-project-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectCard = this.closest('.project-card');
+                    if (projectCard && projectCard.getAttribute('data-status') === 'not-started') {
+                        updateProjectStatus(projectCard, 'in-progress');
+                        saveProgress();
+                        updateAllProgress();
+                    }
+                });
+            });
+
             // Filter functionality
             const statusFilter = document.getElementById('statusFilter');
             if (statusFilter) {
                 statusFilter.addEventListener('change', function() {
                     const selectedStatus = this.value;
-                    const projectCards = document.querySelectorAll('.project-card');
-                    
-                    projectCards.forEach(card => {
+                    document.querySelectorAll('.project-card').forEach(card => {
                         if (selectedStatus === 'all') {
                             card.style.display = 'block';
                         } else {
-                            const cardStatus = card.dataset.status;
+                            const cardStatus = card.getAttribute('data-status');
                             card.style.display = cardStatus === selectedStatus ? 'block' : 'none';
                         }
                     });
                 });
             }
-            
-            // Smooth scroll for navigation
+
+            // Reset progress button
+            const resetBtn = document.getElementById('resetProgressBtn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    resetProgress();
+                });
+            }
+
+            // Navigation smooth scroll
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
+                    const target = document.querySelector(targetId);
                     
-                    if (targetSection) {
+                    if (target) {
+                        // Update active state
                         document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
                         this.classList.add('active');
-                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        
+                        // Smooth scroll
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 });
             });
-            
+
             // Update active nav on scroll
             window.addEventListener('scroll', function() {
                 const sections = document.querySelectorAll('.milestone-section');
-                const navLinks = document.querySelectorAll('.nav-links a');
-                
                 let current = '';
+
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 200) {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.pageYOffset >= sectionTop) {
                         current = section.getAttribute('id');
                     }
                 });
-                
-                navLinks.forEach(link => {
+
+                document.querySelectorAll('.nav-links a').forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${current}`) {
                         link.classList.add('active');
                     }
                 });
             });
-            
-            // "Start Project" button functionality
-            document.querySelectorAll('.btn-secondary').forEach(button => {
-                if (button.textContent.includes('Start Project')) {
-                    button.addEventListener('click', function() {
-                        const card = this.closest('.project-card');
-                        if (card && card.dataset.status === 'not-started') {
-                            updateProjectStatus(card, 'in-progress');
-                            saveProgress();
-                            updateAllProgress();
-                        }
-                    });
-                }
-            });
-            
-            // Add reset button to footer
-            const footerLinks = document.querySelector('.footer-links');
-            if (footerLinks) {
-                const resetLink = document.createElement('a');
-                resetLink.href = '#';
-                resetLink.textContent = 'Reset Progress';
-                resetLink.style.color = 'var(--danger)';
-                resetLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    clearProgress();
-                });
-                footerLinks.appendChild(resetLink);
-            }
-            
-            // Save progress periodically (every 30 seconds)
+        }
+
+        // =====================================================
+        // INITIALIZATION
+        // =====================================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 42 Cursus Tracker Initializing...');
+
+            // Load saved progress first
+            loadProgress();
+
+            // Initialize all event listeners
+            initializeEventListeners();
+
+            // Update all progress indicators
+            updateAllProgress();
+
+            // Auto-save every 30 seconds
             setInterval(saveProgress, 30000);
-            
-            console.log('42 Cursus Tracker initialized successfully!');
+
+            console.log('✅ 42 Cursus Tracker Ready!');
         });
-        
+
         // Save progress before page unload
-        window.addEventListener('beforeunload', function() {
-            saveProgress();
-        });
+        window.addEventListener('beforeunload', saveProgress);
     </script>
 </body>
 </html>
