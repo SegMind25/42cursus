@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42 Project Navigator | Task & Milestone Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-hover: #1c2128;
+            --border: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #7d8590;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-orange: #d29922;
+            --accent-red: #f85149;
+            --accent-purple: #bc8cff;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* Projects Sidebar */
+        .projects-sidebar {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: sticky;
+            top: 2rem;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-item {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .project-item:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-blue);
+            transform: translateX(5px);
+        }
+
+        .project-item.active {
+            background: var(--bg-hover);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
+        }
+
+        .project-item.completed::before {
+            content: '✓';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .project-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .project-progress {
+            width: 100%;
+            height: 4px;
+            background: var(--bg-dark);
+            border-radius: 2px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .project-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            transition: width 0.3s ease;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            min-height: 600px;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .content-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .project-status {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-not-started {
+            background: rgba(125, 133, 144, 0.2);
+            color: var(--text-secondary);
+        }
+
+        .status-in-progress {
+            background: rgba(88, 166, 255, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .status-completed {
+            background: rgba(63, 185, 80, 0.2);
+            color: var(--accent-green);
+        }
+
+        /* Milestones */
+        .milestones-section {
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .milestone-card {
+            background: var(--bg-dark);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .milestone-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .milestone-card.completed {
+            border-color: var(--accent-green);
+            opacity: 0.8;
+        }
+
+        .milestone-card.active {
+            border-color: var(--accent-orange);
+            background: var(--bg-hover);
+        }
+
+        .milestone-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-style: dashed;
+        }
+
+        .milestone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .milestone-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .milestone-number {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .milestone-card.completed .milestone-number {
+            background: var(--accent-green);
+        }
+
+        .milestone-card.active .milestone-number {
+            background: var(--accent-orange);
+        }
+
+        .milestone-card.locked .milestone-number {
+            background: var(--text-secondary);
+        }
+
+        .milestone-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .milestone-tasks {
+            margin-top: 1rem;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: var(--bg-card);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .task-item:hover {
+            background: var(--bg-hover);
+        }
+
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .task-checkbox.checked {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        .task-checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .task-text {
+            flex: 1;
+            color: var(--text-primary);
+        }
+
+        .task-item.completed .task-text {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+        }
+
+        .milestone-progress {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-card);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            transition: width 0.5s ease;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4a8fd8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.4);
+        }
+
+        .btn-success {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #2f8a3f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(63, 185, 80, 0.4);
+        }
+
+        .btn-success:disabled {
+            background: var(--border);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-sidebar {
+                position: static;
+                max-height: none;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>42 Project Navigator</h1>
+            <p class="subtitle">Track your journey through the Common Core</p>
+        </header>
+
+        <div class="main-layout">
+            <!-- Projects Sidebar -->
+            <aside class="projects-sidebar">
+                <div class="sidebar-header">
+                    📚 All Projects
+                </div>
+                <div id="projectsList"></div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div id="mainContent"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <span class="notification-icon">🎉</span>
+            <span id="notificationText">Milestone completed!</span>
+        </div>
+    </div>
+
+    <script>
+        // Project Data Structure
+        const projects = [
+            {
+                id: 'libft',
+                name: 'Libft',
+                circle: 0,
+                difficulty: 'Medium',
+                estimatedHours: 70,
+                status: 'completed',
+                milestones: [
+                    {
+                        id: 1,
+                        title: 'Part 1: Libc Functions',
+                        description: 'Implement essential C library functions (isalpha, strlen, memcpy, etc.)',
+                        tasks: [
+                            { id: 1, text: 'Implement ft_isalpha, ft_isdigit, ft_isalnum', completed: true },
+                            { id: 2, text: 'Implement ft_strlen, ft_strchr, ft_strrchr', completed: true },
+                            { id: 3, text: 'Implement ft_memset, ft_bzero, ft_memcpy, ft_memmove', completed: true },
+                            { id: 4, text: 'Test all functions with edge cases', completed: true }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: 'Part 2: Additional Functions',
+                        description: 'Create utility functions for string manipulation',
+                        tasks: [
+                            { id: 1, text: 'Implement ft_substr, ft_strjoin, ft_strtrim', completed: true },
+                            { id: 2, text: 'Implement ft_split (tokenization)', completed: true },
+                            { id: 3, text: 'Implement ft_itoa (integer to ASCII)', completed: true },
+                            { id: 4, text: 'Implement ft_strmapi and ft_striteri', completed: true }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: 'Part 3: Bonus - Linked Lists',
+                        description: 'Implement linked list data structure and operations',
+                        tasks: [
+                            { id: 1, text: 'Create t_list structure and ft_lstnew', completed: true },
+                            { id: 2, text: 'Implement ft_lstadd_front, ft_lstadd_back', completed: true },
+                            { id: 3, text: 'Implement ft_lstsize, ft_lstlast', completed: true },
+                            { id: 4, text: 'Implement ft_lstdelone, ft_lstclear', completed: true },
+                            { id: 5, text: 'Implement ft_lstiter, ft_lstmap', completed: true }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'ft_printf',
+                name: 'ft_printf',
+                circle: 1,
+                difficulty: 'Medium',
+                estimatedHours: 40,
+                status: 'completed',
+                milestones: [
+                    {
+                        id: 1,
+                        title: 'Setup & Basic Structure',
+                        description: 'Create variadic function framework and parsing',
+                        tasks: [
+                            { id: 1, text: 'Set up project structure and Makefile', completed: true },
+                            { id: 2, text: 'Implement main ft_printf function with va_list', completed: true },
+                            { id: 3, text: 'Create format specifier parser', completed: true }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: 'Conversions: %c %s %d %i',
+                        description: 'Implement character and string conversions',
+                        tasks: [
+                            { id: 1, text: 'Implement %c (character) conversion', completed: true },
+                            { id: 2, text: 'Implement %s (string) conversion', completed: true },
+                            { id: 3, text: 'Implement %d and %i (integer) conversions', completed: true },
+                            { id: 4, text: 'Handle edge cases (NULL, negative numbers)', completed: true }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: 'Conversions: %u %x %X %p',
+                        description: 'Implement unsigned and hexadecimal conversions',
+                        tasks: [
+                            { id: 1, text: 'Implement %u (unsigned int)', completed: true },
+                            { id: 2, text: 'Implement %x and %X (hexadecimal)', completed: true },
+                            { id: 3, text: 'Implement %p (pointer address)', completed: true },
+                            { id: 4, text: 'Implement %% (literal percent)', completed: true }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'get_next_line',
+                name: 'get_next_line',
+                circle: 1,
+                difficulty: 'Medium',
+                estimatedHours: 25,
+                status: 'in-progress',
+                milestones: [
+                    {
+                        id: 1,
+                        title: 'Core Function Setup',
+                        description: 'Setup basic reading and buffer management',
+                        tasks: [
+                            { id: 1, text: 'Create get_next_line function signature', completed: true },
+                            { id: 2, text: 'Implement static variable for buffer storage', completed: true },
+                            { id: 3, text: 'Set up BUFFER_SIZE compilation flag', completed: true }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: 'Line Reading Logic',
+                        description: 'Implement line extraction and newline handling',
+                        tasks: [
+                            { id: 1, text: 'Read from fd using read() system call', completed: true },
+                            { id: 2, text: 'Find newline character in buffer', completed: false },
+                            { id: 3, text: 'Extract line up to newline', completed: false },
+                            { id: 4, text: 'Store remaining buffer content', completed: false }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: 'Edge Cases & Testing',
+                        description: 'Handle EOF, errors, and memory leaks',
+                        tasks: [
+                            { id: 1, text: 'Handle EOF (end of file) properly', completed: false },
+                            { id: 2, text: 'Handle read errors (return NULL)', completed: false },
+                            { id: 3, text: 'Test with different BUFFER_SIZE values', completed: false },
+                            { id: 4, text: 'Verify no memory leaks with valgrind', completed: false }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'born2beroot',
+                name: 'Born2beRoot',
+                circle: 1,
+                difficulty: 'Easy',
+                estimatedHours: 15,
+                status: 'not-started',
+                milestones: [
+                    {
+                        id: 1,
+                        title: 'VM Setup & Partitioning',
+                        description: 'Install Debian and configure encrypted partitions',
+                        tasks: [
+                            { id: 1, text: 'Download and install VirtualBox', completed: false },
+                            { id: 2, text: 'Download Debian ISO', completed: false },
+                            { id: 3, text: 'Create VM with encrypted LVM partitions', completed: false },
+                            { id: 4, text: 'Configure hostname and users', completed: false }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: 'Security Configuration',
+                        description: 'Set up sudo, SSH, and firewall',
+                        tasks: [
+                            { id: 1, text: 'Install and configure sudo with strict rules', completed: false },
+                            { id: 2, text: 'Configure SSH on port 4242', completed: false },
+                            { id: 3, text: 'Set up UFW firewall', completed: false },
+                            { id: 4, text: 'Implement strong password policy', completed: false }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: 'Monitoring Script',
+                        description: 'Create system monitoring bash script',
+                        tasks: [
+                            { id: 1, text: 'Write script to display system info', completed: false },
+                            { id: 2, text: 'Set up cron job to run every 10 minutes', completed: false },
+                            { id: 3, text: 'Test script and prepare for evaluation', completed: false }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'push_swap',
+                name: 'push_swap',
+                circle: 2,
+                difficulty: 'Hard',
+                estimatedHours: 60,
+                status: 'not-started',
+                milestones: [
+                    {
+                        id: 1,
+                        title: 'Parser & Stack Setup',
+                        description: 'Parse arguments and initialize stacks',
+                        tasks: [
+                            { id: 1, text: 'Parse and validate input arguments', completed: false },
+                            { id: 2, text: 'Check for duplicates and non-integers', completed: false },
+                            { id: 3, text: 'Initialize stack A and stack B', completed: false },
+                            { id: 4, text: 'Implement stack operations (sa, sb, ss, pa, pb)', completed: false }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: 'Small Stack Sorting (2-5 numbers)',
+                        description: 'Implement efficient algorithms for small inputs',
+                        tasks: [
+                            { id: 1, text: 'Sort 2 numbers (1 operation)', completed: false },
+                            { id: 2, text: 'Sort 3 numbers (max 2-3 operations)', completed: false },
+                            { id: 3, text: 'Sort 4 numbers (optimized)', completed: false },
+                            { id: 4, text: 'Sort 5 numbers (optimized)', completed: false }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: 'Large Stack Algorithm',
+                        description: 'Implement sorting for 100+ numbers',
+                        tasks: [
+                            { id: 1, text: 'Research and choose algorithm (radix, quicksort, etc.)', completed: false },
+                            { id: 2, text: 'Implement algorithm for 100 numbers (<700 ops)', completed: false },
+                            { id: 3, text: 'Optimize for 500 numbers (<5500 ops)', completed: false },
+                            { id: 4, text: 'Create checker program', completed: false }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'pipex',
+                name: 'pipex',
+                circle: 2,
+                difficulty: 'Medium',
+                estimatedHours: 50,
+                status: 'not-started',
+                milestones: [
+                    {
+                        id: 1,
+                        title: 'Process & Pipe Basics',
+                        description: 'Learn fork, pipe, execve system calls',
+                        tasks: [
+                            { id: 1, text: 'Study fork() and process creation', completed: false },
+                            { id: 2, text: 'Study pipe() for inter-process communication', completed: false },
+                            { id: 3, text: 'Study execve() for command execution', completed: false },
+                            { id: 4, text: 'Handle file descriptors and redirections', completed: false }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: 'Mandatory Part',
+                        description: 'Implement shell pipe behavior',
+                        tasks: [
+                            { id: 1, text: 'Parse command line arguments', completed: false },
+                            { id: 2, text: 'Open infile and outfile', completed: false },
+                            { id: 3, text: 'Create pipe and fork processes', completed: false },
+                            { id: 4, text: 'Execute cmd1 | cmd2 pipeline', completed: false },
+                            { id: 5, text: 'Handle errors and edge cases', completed: false }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: 'Bonus: here_doc & Multiple Pipes',
+                        description: 'Implement advanced features',
+                        tasks: [
+                            { id: 1, text: 'Implement here_doc (<<) functionality', completed: false },
+                            { id: 2, text: 'Support multiple pipes (cmd1 | cmd2 | cmd3...)', completed: false },
+                            { id: 3, text: 'Test with various commands and edge cases', completed: false }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        let currentProject = null;
+
+        // Initialize App
+        function init() {
+            renderProjectsList();
+            loadFromLocalStorage();
+            if (currentProject) {
+                renderProjectDetails(currentProject);
+            } else {
+                renderEmptyState();
+            }
+        }
+
+        // Render Projects List
+        function renderProjectsList() {
+            const projectsList = document.getElementById('projectsList');
+            projectsList.innerHTML = projects.map(project => {
+                const progress = calculateProjectProgress(project);
+                return `
+                    <div class="project-item ${currentProject?.id === project.id ? 'active' : ''} ${project.status === 'completed' ? 'completed' : ''}" 
+                         onclick="selectProject('${project.id}')">
+                        <div class="project-name">${project.name}</div>
+                        <div class="project-meta">
+                            <span>Circle ${project.circle}</span>
+                            <span>${project.difficulty}</span>
+                            <span>~${project.estimatedHours}h</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="project-progress-fill" style="width: ${progress}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Calculate Project Progress
+        function calculateProjectProgress(project) {
+            let totalTasks = 0;
+            let completedTasks = 0;
+            
+            project.milestones.forEach(milestone => {
+                totalTasks += milestone.tasks.length;
+                completedTasks += milestone.tasks.filter(t => t.completed).length;
+            });
+            
+            return totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+        }
+
+        // Select Project
+        function selectProject(projectId) {
+            currentProject = projects.find(p => p.id === projectId);
+            saveToLocalStorage();
+            renderProjectsList();
+            renderProjectDetails(currentProject);
+        }
+
+        // Render Project Details
+        function renderProjectDetails(project) {
+            const mainContent = document.getElementById('mainContent');
+            
+            const statusClass = `status-${project.status.replace('_', '-')}`;
+            const statusText = project.status.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+            
+            mainContent.innerHTML = `
+                <div class="content-header">
+                    <div>
+                        <h2 class="content-title">${project.name}</h2>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            Circle ${project.circle} • ${project.difficulty} • ~${project.estimatedHours} hours
+                        </p>
+                    </div>
+                    <div class="project-status ${statusClass}">${statusText}</div>
+                </div>
+
+                <div class="milestones-section">
+                    <h3 class="section-title">🎯 Milestones & Tasks</h3>
+                    ${renderMilestones(project)}
+                </div>
+            `;
+        }
+
+        // Render Milestones
+        function renderMilestones(project) {
+            let previousCompleted = true;
+            
+            return project.milestones.map((milestone, index) => {
+                const progress = calculateMilestoneProgress(milestone);
+                const isCompleted = progress === 100;
+                const isActive = !isCompleted && previousCompleted;
+                const isLocked = !isCompleted && !previousCompleted;
+                
+                if (isCompleted) {
+                    previousCompleted = true;
+                } else {
+                    previousCompleted = false;
+                }
+                
+                let cardClass = 'milestone-card';
+                if (isCompleted) cardClass += ' completed';
+                if (isActive) cardClass += ' active';
+                if (isLocked) cardClass += ' locked';
+                
+                return `
+                    <div class="${cardClass}" onclick="${isLocked ? '' : `toggleMilestone('${project.id}', ${milestone.id})`}">
+                        <div class="milestone-header">
+                            <div class="milestone-title">
+                                <div class="milestone-number">${milestone.id}</div>
+                                <span>${milestone.title}</span>
+                            </div>
+                            ${isLocked ? '<span style="color: var(--text-secondary);">🔒 Locked</span>' : ''}
+                        </div>
+                        <p class="milestone-description">${milestone.description}</p>
+                        
+                        <div class="milestone-tasks" id="tasks-${project.id}-${milestone.id}" style="display: none;">
+                            ${milestone.tasks.map(task => `
+                                <div class="task-item ${task.completed ? 'completed' : ''}">
+                                    <div class="task-checkbox ${task.completed ? 'checked' : ''}" 
+                                         onclick="event.stopPropagation(); toggleTask('${project.id}', ${milestone.id}, ${task.id})">
+                                    </div>
+                                    <div class="task-text">${task.text}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="milestone-progress">
+                            <div class="progress-label">
+                                <span>Progress</span>
+                                <span>${progress}%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: ${progress}%"></div>
+                            </div>
+                        </div>
+                        
+                        ${isCompleted ? '<button class="btn btn-success" style="width: 100%; margin-top: 1rem;" disabled>✓ Milestone Completed</button>' : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Calculate Milestone Progress
+        function calculateMilestoneProgress(milestone) {
+            const completed = milestone.tasks.filter(t => t.completed).length;
+            return Math.round((completed / milestone.tasks.length) * 100);
+        }
+
+        // Toggle Milestone (show/hide tasks)
+        function toggleMilestone(projectId, milestoneId) {
+            const tasksEl = document.getElementById(`tasks-${projectId}-${milestoneId}`);
+            if (tasksEl) {
+                tasksEl.style.display = tasksEl.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+
+        // Toggle Task
+        function toggleTask(projectId, milestoneId, taskId) {
+            const project = projects.find(p => p.id === projectId);
+            const milestone = project.milestones.find(m => m.id === milestoneId);
+            const task = milestone.tasks.find(t => t.id === taskId);
+            
+            task.completed = !task.completed;
+            
+            // Check if milestone is now complete
+            const milestoneProgress = calculateMilestoneProgress(milestone);
+            if (milestoneProgress === 100) {
+                showNotification(`🎉 Milestone "${milestone.title}" completed! Next milestone unlocked!`);
+            }
+            
+            // Check if project is complete
+            const projectProgress = calculateProjectProgress(project);
+            if (projectProgress === 100 && project.status !== 'completed') {
+                project.status = 'completed';
+                showNotification(`🎊 Project "${project.name}" completed! Amazing work!`);
+            } else if (projectProgress > 0 && project.status === 'not-started') {
+                project.status = 'in-progress';
+            }
+            
+            saveToLocalStorage();
+            renderProjectsList();
+            renderProjectDetails(project);
+        }
+
+        // Show Notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Render Empty State
+        function renderEmptyState() {
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">📚</div>
+                    <h3 style="margin-bottom: 1rem;">Select a Project</h3>
+                    <p>Choose a project from the sidebar to view its milestones and tasks</p>
+                </div>
+            `;
+        }
+
+        // Local Storage Functions
+        function saveToLocalStorage() {
+            localStorage.setItem('42-projects', JSON.stringify(projects));
+            localStorage.setItem('42-current-project', currentProject?.id || '');
+        }
+
+        function loadFromLocalStorage() {
+            const savedProjects = localStorage.getItem('42-projects');
+            if (savedProjects) {
+                const loaded = JSON.parse(savedProjects);
+                // Merge saved data with current structure
+                loaded.forEach(savedProject => {
+                    const project = projects.find(p => p.id === savedProject.id);
+                    if (project) {
+                        project.status = savedProject.status;
+                        project.milestones.forEach((milestone, mIdx) => {
+                            if (savedProject.milestones[mIdx]) {
+                                milestone.tasks.forEach((task, tIdx) => {
+                                    if (savedProject.milestones[mIdx].tasks[tIdx]) {
+                                        task.completed = savedProject.milestones[mIdx].tasks[tIdx].completed;
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+            
+            const savedCurrentProject = localStorage.getItem('42-current-project');
+            if (savedCurrentProject) {
+                currentProject = projects.find(p => p.id === savedCurrentProject);
+            }
+        }
+
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>
