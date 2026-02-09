@@ -1208,7 +1208,186 @@
                         </div>
                     </div>
                 </div>
-                <p style="color: var(--text-muted); padding: 1rem; text-align: center;">Projects: philosophers, minishell</p>
+
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🍽️</span>
+                                <h3>philosophers</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Solve the dining philosophers problem using threads and mutexes</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 70 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/12 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study threading concepts (pthread_create, pthread_join)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study mutex operations (pthread_mutex_lock, unlock)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Understand the dining philosophers problem</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Design philosopher lifecycle (eat, sleep, think)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement thread creation for each philosopher</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement fork (mutex) allocation system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement precise timing with usleep/gettimeofday</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Prevent deadlocks and race conditions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement death detection system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add logging with timestamps</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Test with various parameters (edge cases)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Implement semaphore version</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/philosophers" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">📦</span>
+                                <h3>minishell</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Build a fully functional POSIX-compliant shell like bash</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 210 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Very Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/15 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Set up readline library for interactive prompt</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement lexer (tokenization)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement parser (syntax analysis)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle quotes (single and double)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement environment variable expansion ($VAR)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement redirections (<, >, <<, >>)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement pipes (|)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement built-ins (echo, cd, pwd, export, unset, env, exit)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement command execution with PATH resolution</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle exit status ($?)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement signal handling (Ctrl-C, Ctrl-D, Ctrl-\)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle heredoc (<<)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Test with complex command combinations</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Memory leak testing and cleanup</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Implement logical operators (&& and ||)</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/minishell" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="milestone-section" id="milestone4">
@@ -1224,7 +1403,261 @@
                         </div>
                     </div>
                 </div>
-                <p style="color: var(--text-muted); padding: 1rem; text-align: center;">Projects: netpractice, cub3D, cpp0-4</p>
+
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🌐</span>
+                                <h3>netpractice</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Hands-on networking practice: TCP/IP, routing, subnetting, and DNS</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 50 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/10 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study TCP/IP protocol fundamentals</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Learn IP addressing and subnet masks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Understand routing tables and default gateways</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Practice subnetting calculations</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Complete Level 1-3 exercises</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Complete Level 4-6 exercises</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Complete Level 7-9 exercises</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Complete Level 10 (final challenge)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Practice with online subnet calculators</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Review and master all networking concepts</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/netpractice" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🎮</span>
+                                <h3>cub3D</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Build a Wolfenstein 3D-style raycasting engine with textured walls</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 280 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Very Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/14 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study raycasting algorithm theory</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement map parser (.cub file format)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Validate map (closed walls, valid characters)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Load textures (XPM files)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement player movement (WASD)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement player rotation (arrow keys/mouse)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement raycasting core algorithm</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Calculate wall distances and heights</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Apply textures to walls</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Render floor and ceiling colors</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle collisions with walls</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement smooth rendering (optimize FPS)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add minimap display</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Add sprites, doors, or mouse rotation</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/cub3D" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🏗️</span>
+                                <h3>cpp0-4</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">C++ fundamentals: OOP, classes, inheritance, polymorphism, and RAII</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 100 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/13 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP00: Learn namespaces, classes, member functions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP00: Understand stdio streams, initialization lists</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP01: Master memory allocation (new/delete)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP01: Learn references vs pointers</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP01: Implement file stream operations</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP02: Study Orthodox Canonical Form</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP02: Implement fixed-point numbers</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP03: Learn inheritance and derived classes</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP03: Implement ClapTrap/ScavTrap/FragTrap</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP04: Master polymorphism and virtual functions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP04: Implement abstract classes and interfaces</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Complete all exercises for modules 0-4</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Pass all module evaluations</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/cpp0-4" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="milestone-section" id="milestone5">
@@ -1240,7 +1673,281 @@
                         </div>
                     </div>
                 </div>
-                <p style="color: var(--text-muted); padding: 1rem; text-align: center;">Projects: ft_irc, inception, cpp5-9</p>
+
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">💬</span>
+                                <h3>ft_irc</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Build a multi-user IRC server with full protocol support</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 175 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Very Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/14 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study IRC protocol (RFC 1459, RFC 2812)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Learn socket programming (TCP/IP)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement server socket creation and binding</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle multiple clients with poll/select</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement authentication (PASS, NICK, USER)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement channel operations (JOIN, PART, TOPIC)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement messaging (PRIVMSG, NOTICE)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement channel modes (o, k, l, i, t)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement operator commands (KICK, INVITE, MODE)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle disconnections and errors gracefully</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement file transfer (DCC) - bonus</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add bot functionality - bonus</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Test with real IRC clients (irssi, hexchat)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Stress test with multiple simultaneous connections</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/ft_irc" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🧩</span>
+                                <h3>inception</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Deploy a complete web infrastructure using Docker containers</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 210 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Very Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/15 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study Docker fundamentals (containers, images, volumes)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Learn docker-compose for orchestration</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Set up virtual machine with Docker</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create NGINX container with TLSv1.3</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create WordPress + php-fpm container</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create MariaDB container with database</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Set up Docker volumes for persistence</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create custom Docker network</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Write Dockerfiles (no ready-made images)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Configure environment variables (.env)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Set up domain name (login.42.fr)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement container restart policies</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Add Redis cache, FTP server, or static site</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Test complete infrastructure deployment</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Write comprehensive documentation</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/inception" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🏗️</span>
+                                <h3>cpp5-9</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Advanced C++: templates, STL containers, iterators, and algorithms</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 100 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/13 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP05: Master try/catch exception handling</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP05: Implement bureaucrat and forms</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP06: Learn static_cast, dynamic_cast, reinterpret_cast</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP06: Implement scalar type conversions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP07: Master function templates</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP07: Implement class templates</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP08: Study STL containers (vector, stack, list)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP08: Implement custom iterators</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP09: Master STL algorithms (sort, find, etc.)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP09: Implement Bitcoin exchange database</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">CPP09: Implement RPN calculator</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Complete all exercises for modules 5-9</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Pass all module evaluations</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/cpp5-9" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="milestone-section" id="milestone6">
@@ -1256,7 +1963,143 @@
                         </div>
                     </div>
                 </div>
-                <p style="color: var(--text-muted); padding: 1rem; text-align: center;">Project: transcendence</p>
+
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🕹️</span>
+                                <h3>transcendence</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Real-time multiplayer Pong game with full web stack (frontend, backend, database)</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 300+ hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Extreme</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/20 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Choose tech stack (Django/NestJS/Rails backend)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Set up project structure and version control</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement user authentication system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add OAuth integration (42 API)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Design and implement database schema</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create user profile management system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement Pong game engine (Canvas/WebGL)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add real-time multiplayer with WebSockets</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement matchmaking system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create chat system (channels, DMs)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add friends/block system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement game history and statistics</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create leaderboard and ranking system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add tournament system - Major Module</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement 2FA security - Major Module</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add AI opponent - Major Module</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement responsive design (mobile support)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add advanced 3D graphics - Major Module</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Deploy with Docker/Kubernetes</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Complete all major modules (7+ required)</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/transcendence" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Congratulations Card -->
+                    <div class="project-card" style="background: linear-gradient(135deg, rgba(0, 186, 188, 0.1), rgba(139, 92, 246, 0.1)); border: 2px solid var(--primary);">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">🎓</div>
+                            <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary);">Journey Complete!</h3>
+                            <p style="color: var(--text); line-height: 1.8;">
+                                Upon completing transcendence, you will have mastered the 42 Common Core curriculum.
+                                This journey represents hundreds of hours of dedication, problem-solving, and growth.
+                            </p>
+                            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--surface); border-radius: 8px;">
+                                <p style="color: var(--text-muted); font-style: italic;">
+                                    "The only way to do great work is to love what you do."
+                                </p>
+                                <p style="color: var(--primary); margin-top: 0.5rem; font-weight: 600;">
+                                    - Steve Jobs
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
