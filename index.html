@@ -625,9 +625,9 @@
                         <h2>Milestone 0 - Foundation</h2>
                         <div class="milestone-progress">
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 100%"></div>
+                                <div class="progress-fill" style="width: 0%"></div>
                             </div>
-                            <span class="progress-text">100%</span>
+                            <span class="progress-text">0%</span>
                         </div>
                     </div>
                 </div>
@@ -2119,8 +2119,228 @@
     </footer>
 
     <script>
+        // Progress persistence system using localStorage
+        const STORAGE_KEY = '42_cursus_progress';
+
+        // Load saved progress from localStorage
+        function loadProgress() {
+            try {
+                const savedProgress = localStorage.getItem(STORAGE_KEY);
+                if (savedProgress) {
+                    const progress = JSON.parse(savedProgress);
+                    
+                    // Restore checkbox states
+                    document.querySelectorAll('.task-checkbox').forEach((checkbox, index) => {
+                        const taskId = `task_${index}`;
+                        if (progress.tasks && progress.tasks[taskId]) {
+                            checkbox.classList.add('checked');
+                            const taskText = checkbox.nextElementSibling;
+                            if (taskText) {
+                                taskText.classList.add('completed');
+                            }
+                        }
+                    });
+
+                    // Restore project statuses
+                    if (progress.projects) {
+                        document.querySelectorAll('.project-card').forEach((card, index) => {
+                            const projectId = `project_${index}`;
+                            if (progress.projects[projectId]) {
+                                const status = progress.projects[projectId];
+                                card.dataset.status = status;
+                                
+                                // Update status badge
+                                const badge = card.querySelector('.status-badge');
+                                if (badge) {
+                                    badge.className = 'status-badge';
+                                    if (status === 'completed') {
+                                        badge.classList.add('status-completed');
+                                        badge.textContent = 'Completed';
+                                    } else if (status === 'in-progress') {
+                                        badge.classList.add('status-in-progress');
+                                        badge.textContent = 'In Progress';
+                                    } else {
+                                        badge.classList.add('status-not-started');
+                                        badge.textContent = 'Not Started';
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    console.log('Progress loaded successfully');
+                    updateAllProgress();
+                }
+            } catch (error) {
+                console.error('Error loading progress:', error);
+            }
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            try {
+                const progress = {
+                    tasks: {},
+                    projects: {},
+                    lastUpdated: new Date().toISOString()
+                };
+
+                // Save checkbox states
+                document.querySelectorAll('.task-checkbox').forEach((checkbox, index) => {
+                    const taskId = `task_${index}`;
+                    progress.tasks[taskId] = checkbox.classList.contains('checked');
+                });
+
+                // Save project statuses
+                document.querySelectorAll('.project-card').forEach((card, index) => {
+                    const projectId = `project_${index}`;
+                    progress.projects[projectId] = card.dataset.status;
+                });
+
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+                console.log('Progress saved successfully');
+            } catch (error) {
+                console.error('Error saving progress:', error);
+            }
+        }
+
+        // Clear all progress (for reset functionality)
+        function clearProgress() {
+            if (confirm('Are you sure you want to reset ALL progress? This cannot be undone!')) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
+        }
+
+        // Update all progress bars and statistics
+        function updateAllProgress() {
+            updateProjectProgress();
+            updateMilestoneProgress();
+        }
+
+        // Update milestone progress bars
+        function updateMilestoneProgress() {
+            const milestones = document.querySelectorAll('.milestone-section');
+            
+            milestones.forEach(milestone => {
+                const projectCards = milestone.querySelectorAll('.project-card');
+                const totalProjects = projectCards.length;
+                
+                if (totalProjects === 0) return;
+
+                let completedCount = 0;
+                let totalTasks = 0;
+                let completedTasks = 0;
+
+                projectCards.forEach(card => {
+                    const tasks = card.querySelectorAll('.task-checkbox');
+                    const checkedTasks = card.querySelectorAll('.task-checkbox.checked');
+                    
+                    totalTasks += tasks.length;
+                    completedTasks += checkedTasks.length;
+
+                    // Count as completed if all tasks are done
+                    if (tasks.length > 0 && checkedTasks.length === tasks.length) {
+                        completedCount++;
+                    }
+                });
+
+                // Calculate progress percentage based on tasks
+                const progressPercent = totalTasks > 0 
+                    ? Math.round((completedTasks / totalTasks) * 100) 
+                    : 0;
+
+                // Update progress bar
+                const progressBar = milestone.querySelector('.progress-fill');
+                const progressText = milestone.querySelector('.progress-text');
+                
+                if (progressBar) {
+                    progressBar.style.width = progressPercent + '%';
+                }
+                if (progressText) {
+                    progressText.textContent = progressPercent + '%';
+                }
+            });
+        }
+
+        // Update overall project statistics
+        function updateProjectProgress() {
+            const allCards = document.querySelectorAll('.project-card');
+            const totalProjects = allCards.length;
+            
+            let completedProjects = 0;
+            let inProgressProjects = 0;
+            let totalTasks = 0;
+            let completedTasks = 0;
+
+            allCards.forEach(card => {
+                const tasks = card.querySelectorAll('.task-checkbox');
+                const checkedTasks = card.querySelectorAll('.task-checkbox.checked');
+                const tasksHeader = card.querySelector('.tasks-header span');
+                
+                totalTasks += tasks.length;
+                completedTasks += checkedTasks.length;
+
+                // Update task counter in card
+                if (tasksHeader && tasks.length > 0) {
+                    tasksHeader.textContent = `${checkedTasks.length}/${tasks.length} Tasks`;
+                }
+
+                // Determine project status
+                if (tasks.length > 0) {
+                    if (checkedTasks.length === tasks.length) {
+                        completedProjects++;
+                        updateProjectStatus(card, 'completed');
+                    } else if (checkedTasks.length > 0) {
+                        inProgressProjects++;
+                        updateProjectStatus(card, 'in-progress');
+                    } else {
+                        updateProjectStatus(card, 'not-started');
+                    }
+                }
+            });
+
+            // Calculate overall progress
+            const overallProgress = totalTasks > 0 
+                ? Math.round((completedTasks / totalTasks) * 100) 
+                : 0;
+
+            // Update header statistics
+            const totalProjectsEl = document.getElementById('totalProjects');
+            const completedProjectsEl = document.getElementById('completedProjects');
+            const overallProgressEl = document.getElementById('overallProgress');
+
+            if (totalProjectsEl) totalProjectsEl.textContent = totalProjects;
+            if (completedProjectsEl) completedProjectsEl.textContent = completedProjects;
+            if (overallProgressEl) overallProgressEl.textContent = overallProgress + '%';
+        }
+
+        // Update project status badge
+        function updateProjectStatus(card, status) {
+            card.dataset.status = status;
+            const badge = card.querySelector('.status-badge');
+            
+            if (badge) {
+                badge.className = 'status-badge';
+                
+                if (status === 'completed') {
+                    badge.classList.add('status-completed');
+                    badge.textContent = 'Completed';
+                } else if (status === 'in-progress') {
+                    badge.classList.add('status-in-progress');
+                    badge.textContent = 'In Progress';
+                } else {
+                    badge.classList.add('status-not-started');
+                    badge.textContent = 'Not Started';
+                }
+            }
+        }
+
         // Interactive functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Load saved progress first
+            loadProgress();
+
             // Task checkbox functionality
             const checkboxes = document.querySelectorAll('.task-checkbox');
             checkboxes.forEach(checkbox => {
@@ -2128,25 +2348,30 @@
                     this.classList.toggle('checked');
                     const taskText = this.nextElementSibling;
                     taskText.classList.toggle('completed');
-                    updateProjectProgress();
+                    
+                    // Update progress and save
+                    updateAllProgress();
+                    saveProgress();
                 });
             });
 
             // Filter functionality
             const statusFilter = document.getElementById('statusFilter');
-            statusFilter.addEventListener('change', function() {
-                const selectedStatus = this.value;
-                const projectCards = document.querySelectorAll('.project-card');
-                
-                projectCards.forEach(card => {
-                    if (selectedStatus === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        const cardStatus = card.dataset.status;
-                        card.style.display = cardStatus === selectedStatus ? 'block' : 'none';
-                    }
+            if (statusFilter) {
+                statusFilter.addEventListener('change', function() {
+                    const selectedStatus = this.value;
+                    const projectCards = document.querySelectorAll('.project-card');
+                    
+                    projectCards.forEach(card => {
+                        if (selectedStatus === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            const cardStatus = card.dataset.status;
+                            card.style.display = cardStatus === selectedStatus ? 'block' : 'none';
+                        }
+                    });
                 });
-            });
+            }
 
             // Smooth scroll for navigation
             document.querySelectorAll('.nav-links a').forEach(link => {
@@ -2155,12 +2380,14 @@
                     const targetId = this.getAttribute('href');
                     const targetSection = document.querySelector(targetId);
                     
-                    // Update active state
-                    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Smooth scroll
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (targetSection) {
+                        // Update active state
+                        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Smooth scroll
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 });
             });
 
@@ -2186,16 +2413,46 @@
                 });
             });
 
-            function updateProjectProgress() {
-                // Update overall statistics
-                const totalProjects = document.querySelectorAll('.project-card').length;
-                const completedProjects = document.querySelectorAll('.status-completed').length;
-                const progress = Math.round((completedProjects / totalProjects) * 100);
-                
-                document.getElementById('totalProjects').textContent = totalProjects;
-                document.getElementById('completedProjects').textContent = completedProjects;
-                document.getElementById('overallProgress').textContent = progress + '%';
+            // Add "Start Project" button functionality
+            document.querySelectorAll('.btn-secondary').forEach(button => {
+                if (button.textContent.includes('Start Project')) {
+                    button.addEventListener('click', function() {
+                        const card = this.closest('.project-card');
+                        if (card && card.dataset.status === 'not-started') {
+                            updateProjectStatus(card, 'in-progress');
+                            saveProgress();
+                            updateAllProgress();
+                        }
+                    });
+                }
+            });
+
+            // Initial progress calculation
+            updateAllProgress();
+
+            // Add reset button to footer
+            const footerLinks = document.querySelector('.footer-links');
+            if (footerLinks) {
+                const resetLink = document.createElement('a');
+                resetLink.href = '#';
+                resetLink.textContent = 'Reset Progress';
+                resetLink.style.color = 'var(--danger)';
+                resetLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    clearProgress();
+                });
+                footerLinks.appendChild(resetLink);
             }
+
+            // Save progress periodically (every 30 seconds)
+            setInterval(saveProgress, 30000);
+
+            console.log('42 Cursus Tracker initialized successfully!');
+        });
+
+        // Save progress before page unload
+        window.addEventListener('beforeunload', function() {
+            saveProgress();
         });
     </script>
 </body>
