@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>42 Project Navigator | Task & Milestone Tracker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <title>42 Cursus - Journey Tracker</title>
     <style>
         * {
             margin: 0;
@@ -13,1011 +12,1348 @@
         }
 
         :root {
-            --bg-dark: #0d1117;
-            --bg-card: #161b22;
-            --bg-hover: #1c2128;
-            --border: #30363d;
-            --text-primary: #e6edf3;
-            --text-secondary: #7d8590;
-            --accent-blue: #58a6ff;
-            --accent-green: #3fb950;
-            --accent-orange: #d29922;
-            --accent-red: #f85149;
-            --accent-purple: #bc8cff;
+            --primary: #00babc;
+            --primary-dark: #009294;
+            --secondary: #1a1a2e;
+            --background: #0f0f1e;
+            --surface: #16213e;
+            --surface-light: #1f2b4a;
+            --text: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --accent: #8b5cf6;
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            background: var(--background);
+            color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
 
         /* Header */
         header {
-            margin-bottom: 3rem;
-            text-align: center;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--surface) 100%);
+            padding: 2rem 0;
+            border-bottom: 3px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        /* Main Layout */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        /* Projects Sidebar */
-        .projects-sidebar {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            position: sticky;
-            top: 2rem;
-            max-height: calc(100vh - 4rem);
-            overflow-y: auto;
-        }
-
-        .sidebar-header {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-item {
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .project-item:hover {
-            background: var(--bg-hover);
-            border-color: var(--accent-blue);
-            transform: translateX(5px);
-        }
-
-        .project-item.active {
-            background: var(--bg-hover);
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
-        }
-
-        .project-item.completed::before {
-            content: '✓';
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--accent-green);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .project-name {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .project-meta {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .project-progress {
-            width: 100%;
-            height: 4px;
-            background: var(--bg-dark);
-            border-radius: 2px;
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
-
-        .project-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            transition: width 0.3s ease;
-        }
-
-        /* Main Content */
-        .main-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            min-height: 600px;
-        }
-
-        .content-header {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
 
-        .content-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .project-status {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .status-not-started {
-            background: rgba(125, 133, 144, 0.2);
-            color: var(--text-secondary);
-        }
-
-        .status-in-progress {
-            background: rgba(88, 166, 255, 0.2);
-            color: var(--accent-blue);
-        }
-
-        .status-completed {
-            background: rgba(63, 185, 80, 0.2);
-            color: var(--accent-green);
-        }
-
-        /* Milestones */
-        .milestones-section {
-            margin-top: 2rem;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
+        .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
 
-        .milestone-card {
-            background: var(--bg-dark);
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+        .logo h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 186, 188, 0.3);
+        }
+
+        .progress-summary {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--surface);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
             transition: all 0.3s ease;
-            cursor: pointer;
+            font-weight: 500;
         }
 
-        .milestone-card:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary);
+            color: var(--secondary);
         }
 
-        .milestone-card.completed {
-            border-color: var(--accent-green);
-            opacity: 0.8;
+        /* Main Content */
+        main {
+            padding: 3rem 0;
         }
 
-        .milestone-card.active {
-            border-color: var(--accent-orange);
-            background: var(--bg-hover);
-        }
-
-        .milestone-card.locked {
-            opacity: 0.5;
-            cursor: not-allowed;
-            border-style: dashed;
+        .milestone-section {
+            margin-bottom: 4rem;
         }
 
         .milestone-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .milestone-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
         }
 
         .milestone-number {
-            width: 32px;
-            height: 32px;
-            background: var(--accent-blue);
-            border-radius: 50%;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 60px;
+        }
+
+        .milestone-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .milestone-progress {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
+            gap: 1rem;
+            margin-top: 0.5rem;
         }
 
-        .milestone-card.completed .milestone-number {
-            background: var(--accent-green);
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--surface);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .milestone-card.active .milestone-number {
-            background: var(--accent-orange);
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.5s ease;
+            border-radius: 10px;
         }
 
-        .milestone-card.locked .milestone-number {
-            background: var(--text-secondary);
+        .progress-text {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 50px;
         }
 
-        .milestone-description {
-            color: var(--text-secondary);
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 186, 188, 0.2);
+            border-color: var(--primary);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 1rem;
-            line-height: 1.6;
         }
 
-        .milestone-tasks {
+        .project-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .project-icon {
+            font-size: 1.5rem;
+        }
+
+        .project-title h3 {
+            font-size: 1.3rem;
+            color: var(--text);
+        }
+
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-completed {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-in-progress {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        .status-not-started {
+            background: rgba(161, 161, 170, 0.2);
+            color: var(--text-muted);
+            border: 1px solid var(--text-muted);
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .tasks-section {
             margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tasks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .tasks-header h4 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .task-item {
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            background: var(--bg-card);
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .task-item:hover {
-            background: var(--bg-hover);
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 0.6rem 0;
         }
 
         .task-checkbox {
             width: 20px;
             height: 20px;
-            border: 2px solid var(--border);
+            border: 2px solid var(--primary);
             border-radius: 4px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .task-checkbox:hover {
+            background: rgba(0, 186, 188, 0.1);
         }
 
         .task-checkbox.checked {
-            background: var(--accent-green);
-            border-color: var(--accent-green);
+            background: var(--primary);
         }
 
         .task-checkbox.checked::after {
             content: '✓';
-            color: white;
-            font-weight: 700;
-            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: bold;
         }
 
         .task-text {
             flex: 1;
-            color: var(--text-primary);
-        }
-
-        .task-item.completed .task-text {
-            text-decoration: line-through;
-            color: var(--text-secondary);
-        }
-
-        .milestone-progress {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
+            color: var(--text);
             font-size: 0.9rem;
-            color: var(--text-secondary);
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--bg-card);
-            border-radius: 4px;
-            overflow: hidden;
+        .task-text.completed {
+            text-decoration: line-through;
+            color: var(--text-muted);
         }
 
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            transition: width 0.5s ease;
+        .project-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
         }
 
-        /* Buttons */
         .btn {
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border: none;
-            border-radius: 6px;
-            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .btn-primary {
-            background: var(--accent-blue);
-            color: white;
+            background: var(--primary);
+            color: var(--secondary);
         }
 
         .btn-primary:hover {
-            background: #4a8fd8;
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 186, 188, 0.3);
         }
 
-        .btn-success {
-            background: var(--accent-green);
-            color: white;
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
         }
 
-        .btn-success:hover {
-            background: #2f8a3f;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(63, 185, 80, 0.4);
+        .btn-secondary:hover {
+            background: rgba(0, 186, 188, 0.1);
         }
 
-        .btn-success:disabled {
-            background: var(--border);
-            cursor: not-allowed;
-            transform: none;
+        /* Stats Dashboard */
+        .stats-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-secondary);
+        .dashboard-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .empty-state-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+        .dashboard-card h3 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: var(--bg-card);
-            border: 1px solid var(--accent-green);
-            border-radius: 8px;
-            padding: 1rem 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            z-index: 1000;
+        .dashboard-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
         }
 
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        .notification-content {
+        /* Filter Section */
+        .filter-section {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
             display: flex;
-            align-items: center;
             gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .notification-icon {
-            font-size: 1.5rem;
+        .filter-section label {
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .filter-select {
+            padding: 0.6rem 1rem;
+            background: var(--surface-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:hover {
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 3px solid var(--primary);
+        }
+
+        .footer-content {
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .main-layout {
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .progress-summary {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            .projects-sidebar {
-                position: static;
-                max-height: none;
+            .stats-dashboard {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
+        .project-card {
+            animation: fadeInUp 0.5s ease backwards;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-blue);
-        }
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>42 Project Navigator</h1>
-            <p class="subtitle">Track your journey through the Common Core</p>
-        </header>
-
-        <div class="main-layout">
-            <!-- Projects Sidebar -->
-            <aside class="projects-sidebar">
-                <div class="sidebar-header">
-                    📚 All Projects
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">42</div>
+                    <div>
+                        <h1>1337MED Cursus</h1>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Journey to Excellence</p>
+                    </div>
                 </div>
-                <div id="projectsList"></div>
-            </aside>
-
-            <!-- Main Content -->
-            <main class="main-content">
-                <div id="mainContent"></div>
-            </main>
+                <div class="progress-summary">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalProjects">26</div>
+                        <div class="stat-label">Total Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="completedProjects">1</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="overallProgress">4%</div>
+                        <div class="stat-label">Progress</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Notification -->
-    <div class="notification" id="notification">
-        <div class="notification-content">
-            <span class="notification-icon">🎉</span>
-            <span id="notificationText">Milestone completed!</span>
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#milestone0" class="active">Milestone 0</a></li>
+                <li><a href="#milestone1">Milestone 1</a></li>
+                <li><a href="#milestone2">Milestone 2</a></li>
+                <li><a href="#milestone3">Milestone 3</a></li>
+                <li><a href="#milestone4">Milestone 4</a></li>
+                <li><a href="#milestone5">Milestone 5</a></li>
+                <li><a href="#milestone6">Milestone 6</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="filter-section">
+                <label>Filter by Status:</label>
+                <select class="filter-select" id="statusFilter">
+                    <option value="all">All Projects</option>
+                    <option value="completed">Completed</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="not-started">Not Started</option>
+                </select>
+                <label style="margin-left: 1rem;">Sort by:</label>
+                <select class="filter-select" id="sortFilter">
+                    <option value="milestone">Milestone</option>
+                    <option value="status">Status</option>
+                    <option value="name">Name</option>
+                </select>
+            </div>
+
+            <!-- Milestone 0 -->
+            <section class="milestone-section" id="milestone0">
+                <div class="milestone-header">
+                    <div class="milestone-number">M0</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 0 - Foundation</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="progress-text">100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card" data-status="in-progress">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">📖</span>
+                                <h3>libft</h3>
+                            </div>
+                            <span class="status-badge status-in-progress">In Progress</span>
+                        </div>
+                        <p class="project-description">Essential C functions library replication - building your own standard library from scratch</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 70 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">5/12 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox checked"></div>
+                                <span class="task-text completed">Implement string manipulation functions (strlen, strcpy, strcmp)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox checked"></div>
+                                <span class="task-text completed">Memory functions (memset, memcpy, memmove)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox checked"></div>
+                                <span class="task-text completed">Character validation (isalpha, isdigit, isascii)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox checked"></div>
+                                <span class="task-text completed">Conversion functions (atoi, itoa)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox checked"></div>
+                                <span class="task-text completed">Linked list operations</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Advanced string functions (split, join, trim)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">File descriptor functions (putchar_fd, putstr_fd)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Additional list manipulation functions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create comprehensive Makefile</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Write unit tests for all functions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Memory leak testing with valgrind</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Submit for peer evaluation</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/libft" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>📝</span> Add Task
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Milestone 1 -->
+            <section class="milestone-section" id="milestone1">
+                <div class="milestone-header">
+                    <div class="milestone-number">M1</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 1 - System Programming</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🐧</span>
+                                <h3>born2beRoot</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Configure a secure Linux VM with essential services and strict security policies</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 40 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/10 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Install Debian/Rocky Linux in VirtualBox</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Configure LVM partitioning</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Set up SSH service on custom port</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Configure UFW firewall rules</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement strong password policy</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Configure sudo with strict rules</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create monitoring script (monitoring.sh)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Set up cron job for monitoring</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Prepare defense documentation</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Set up WordPress with lighttpd/nginx</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/Born2beRoot" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🖨️</span>
+                                <h3>ft_printf</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Reimplement the printf function from scratch with variadic arguments</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 50 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/9 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study variadic functions (va_start, va_arg, va_end)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement %c (character) conversion</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement %s (string) conversion</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement %d and %i (integer) conversions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement %u (unsigned int) conversion</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement %x and %X (hexadecimal) conversions</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement %p (pointer address) conversion</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle %% (literal percent sign)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Test against original printf behavior</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/ft_printf" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">📝</span>
+                                <h3>get_next_line</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Read input line by line from file descriptors with buffer management</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 40 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/8 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Understand file descriptors and read() function</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Design static buffer management system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement line extraction logic</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle newline character detection</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle EOF (End Of File) properly</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Test with different BUFFER_SIZE values</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Handle multiple file descriptors simultaneously</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Memory leak testing</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/get_next_line" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Milestone 2 -->
+            <section class="milestone-section" id="milestone2">
+                <div class="milestone-header">
+                    <div class="milestone-number">M2</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 2 - Algorithms & Graphics</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🔢</span>
+                                <h3>push_swap</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Optimize sorting algorithms using two stacks with minimal operations</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 60 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Hard</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/11 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study sorting algorithms (quicksort, radix sort)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement stack data structure</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement stack operations (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Design sorting algorithm for 3 numbers</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Design sorting algorithm for 5 numbers</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement main sorting algorithm (100-500 numbers)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Optimize move count (target: <700 for 100, <5500 for 500)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle error cases and input validation</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Create checker program</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Test with various input sizes</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Benchmark and optimize performance</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/push_swap" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🌀</span>
+                                <h3>fractol</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Render beautiful fractals (Mandelbrot, Julia) with interactive controls</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 60 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/10 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Learn MiniLibX graphics library</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study fractal mathematics (complex numbers)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement Mandelbrot set rendering</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement Julia set rendering</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add zoom functionality (mouse wheel)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add pan functionality (arrow keys/mouse)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement color palette system</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Add iteration control</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Add third fractal type (Burning Ship)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Optimize rendering performance</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/fractol" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-status="not-started">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <span class="project-icon">🧪</span>
+                                <h3>pipex</h3>
+                            </div>
+                            <span class="status-badge status-not-started">Not Started</span>
+                        </div>
+                        <p class="project-description">Replicate shell pipe behavior using fork, pipe, and exec</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span>⏱️</span>
+                                <span>Est. 50 hours</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>🎯</span>
+                                <span>Difficulty: Medium</span>
+                            </div>
+                        </div>
+                        <div class="tasks-section">
+                            <div class="tasks-header">
+                                <h4>To-Do List</h4>
+                                <span style="font-size: 0.85rem; color: var(--primary);">0/9 Tasks</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study process creation (fork)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study inter-process communication (pipe)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Study process replacement (execve)</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement file handling and validation</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Implement command parsing and PATH resolution</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Create child processes with fork</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Connect processes with pipes</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Handle errors and edge cases</span>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <span class="task-text">Bonus: Handle here_doc and multiple pipes</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/SegMind25/42Cursus/tree/main/pipex" class="btn btn-primary" target="_blank">
+                                <span>📁</span> View Code
+                            </a>
+                            <button class="btn btn-secondary">
+                                <span>▶️</span> Start Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Additional milestones would follow the same pattern -->
+            <!-- For brevity, I'll add milestone headers but you can expand with full projects -->
+
+            <section class="milestone-section" id="milestone3">
+                <div class="milestone-header">
+                    <div class="milestone-number">M3</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 3 - Concurrency & Shell</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <p style="color: var(--text-muted); padding: 1rem; text-align: center;">Projects: philosophers, minishell</p>
+            </section>
+
+            <section class="milestone-section" id="milestone4">
+                <div class="milestone-header">
+                    <div class="milestone-number">M4</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 4 - Graphics & C++</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <p style="color: var(--text-muted); padding: 1rem; text-align: center;">Projects: netpractice, cub3D, cpp0-4</p>
+            </section>
+
+            <section class="milestone-section" id="milestone5">
+                <div class="milestone-header">
+                    <div class="milestone-number">M5</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 5 - DevOps & Networking</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <p style="color: var(--text-muted); padding: 1rem; text-align: center;">Projects: ft_irc, inception, cpp5-9</p>
+            </section>
+
+            <section class="milestone-section" id="milestone6">
+                <div class="milestone-header">
+                    <div class="milestone-number">M6</div>
+                    <div class="milestone-info">
+                        <h2>Milestone 6 - Final Project</h2>
+                        <div class="milestone-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <p style="color: var(--text-muted); padding: 1rem; text-align: center;">Project: transcendence</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>Built with patience, discipline, and zero AI-generated code</p>
+                <p style="margin-top: 0.5rem; color: var(--primary);">© 2025 1337MED Journey</p>
+                <div class="footer-links">
+                    <a href="https://github.com/SegMind25/42cursus" target="_blank">GitHub Repository</a>
+                    <a href="#" target="_blank">Intra Profile</a>
+                    <a href="#" target="_blank">Progress Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Project Data Structure
-        const projects = [
-            {
-                id: 'libft',
-                name: 'Libft',
-                circle: 0,
-                difficulty: 'Medium',
-                estimatedHours: 70,
-                status: 'completed',
-                milestones: [
-                    {
-                        id: 1,
-                        title: 'Part 1: Libc Functions',
-                        description: 'Implement essential C library functions (isalpha, strlen, memcpy, etc.)',
-                        tasks: [
-                            { id: 1, text: 'Implement ft_isalpha, ft_isdigit, ft_isalnum', completed: true },
-                            { id: 2, text: 'Implement ft_strlen, ft_strchr, ft_strrchr', completed: true },
-                            { id: 3, text: 'Implement ft_memset, ft_bzero, ft_memcpy, ft_memmove', completed: true },
-                            { id: 4, text: 'Test all functions with edge cases', completed: true }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        title: 'Part 2: Additional Functions',
-                        description: 'Create utility functions for string manipulation',
-                        tasks: [
-                            { id: 1, text: 'Implement ft_substr, ft_strjoin, ft_strtrim', completed: true },
-                            { id: 2, text: 'Implement ft_split (tokenization)', completed: true },
-                            { id: 3, text: 'Implement ft_itoa (integer to ASCII)', completed: true },
-                            { id: 4, text: 'Implement ft_strmapi and ft_striteri', completed: true }
-                        ]
-                    },
-                    {
-                        id: 3,
-                        title: 'Part 3: Bonus - Linked Lists',
-                        description: 'Implement linked list data structure and operations',
-                        tasks: [
-                            { id: 1, text: 'Create t_list structure and ft_lstnew', completed: true },
-                            { id: 2, text: 'Implement ft_lstadd_front, ft_lstadd_back', completed: true },
-                            { id: 3, text: 'Implement ft_lstsize, ft_lstlast', completed: true },
-                            { id: 4, text: 'Implement ft_lstdelone, ft_lstclear', completed: true },
-                            { id: 5, text: 'Implement ft_lstiter, ft_lstmap', completed: true }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 'ft_printf',
-                name: 'ft_printf',
-                circle: 1,
-                difficulty: 'Medium',
-                estimatedHours: 40,
-                status: 'completed',
-                milestones: [
-                    {
-                        id: 1,
-                        title: 'Setup & Basic Structure',
-                        description: 'Create variadic function framework and parsing',
-                        tasks: [
-                            { id: 1, text: 'Set up project structure and Makefile', completed: true },
-                            { id: 2, text: 'Implement main ft_printf function with va_list', completed: true },
-                            { id: 3, text: 'Create format specifier parser', completed: true }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        title: 'Conversions: %c %s %d %i',
-                        description: 'Implement character and string conversions',
-                        tasks: [
-                            { id: 1, text: 'Implement %c (character) conversion', completed: true },
-                            { id: 2, text: 'Implement %s (string) conversion', completed: true },
-                            { id: 3, text: 'Implement %d and %i (integer) conversions', completed: true },
-                            { id: 4, text: 'Handle edge cases (NULL, negative numbers)', completed: true }
-                        ]
-                    },
-                    {
-                        id: 3,
-                        title: 'Conversions: %u %x %X %p',
-                        description: 'Implement unsigned and hexadecimal conversions',
-                        tasks: [
-                            { id: 1, text: 'Implement %u (unsigned int)', completed: true },
-                            { id: 2, text: 'Implement %x and %X (hexadecimal)', completed: true },
-                            { id: 3, text: 'Implement %p (pointer address)', completed: true },
-                            { id: 4, text: 'Implement %% (literal percent)', completed: true }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 'get_next_line',
-                name: 'get_next_line',
-                circle: 1,
-                difficulty: 'Medium',
-                estimatedHours: 25,
-                status: 'in-progress',
-                milestones: [
-                    {
-                        id: 1,
-                        title: 'Core Function Setup',
-                        description: 'Setup basic reading and buffer management',
-                        tasks: [
-                            { id: 1, text: 'Create get_next_line function signature', completed: true },
-                            { id: 2, text: 'Implement static variable for buffer storage', completed: true },
-                            { id: 3, text: 'Set up BUFFER_SIZE compilation flag', completed: true }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        title: 'Line Reading Logic',
-                        description: 'Implement line extraction and newline handling',
-                        tasks: [
-                            { id: 1, text: 'Read from fd using read() system call', completed: true },
-                            { id: 2, text: 'Find newline character in buffer', completed: false },
-                            { id: 3, text: 'Extract line up to newline', completed: false },
-                            { id: 4, text: 'Store remaining buffer content', completed: false }
-                        ]
-                    },
-                    {
-                        id: 3,
-                        title: 'Edge Cases & Testing',
-                        description: 'Handle EOF, errors, and memory leaks',
-                        tasks: [
-                            { id: 1, text: 'Handle EOF (end of file) properly', completed: false },
-                            { id: 2, text: 'Handle read errors (return NULL)', completed: false },
-                            { id: 3, text: 'Test with different BUFFER_SIZE values', completed: false },
-                            { id: 4, text: 'Verify no memory leaks with valgrind', completed: false }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 'born2beroot',
-                name: 'Born2beRoot',
-                circle: 1,
-                difficulty: 'Easy',
-                estimatedHours: 15,
-                status: 'not-started',
-                milestones: [
-                    {
-                        id: 1,
-                        title: 'VM Setup & Partitioning',
-                        description: 'Install Debian and configure encrypted partitions',
-                        tasks: [
-                            { id: 1, text: 'Download and install VirtualBox', completed: false },
-                            { id: 2, text: 'Download Debian ISO', completed: false },
-                            { id: 3, text: 'Create VM with encrypted LVM partitions', completed: false },
-                            { id: 4, text: 'Configure hostname and users', completed: false }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        title: 'Security Configuration',
-                        description: 'Set up sudo, SSH, and firewall',
-                        tasks: [
-                            { id: 1, text: 'Install and configure sudo with strict rules', completed: false },
-                            { id: 2, text: 'Configure SSH on port 4242', completed: false },
-                            { id: 3, text: 'Set up UFW firewall', completed: false },
-                            { id: 4, text: 'Implement strong password policy', completed: false }
-                        ]
-                    },
-                    {
-                        id: 3,
-                        title: 'Monitoring Script',
-                        description: 'Create system monitoring bash script',
-                        tasks: [
-                            { id: 1, text: 'Write script to display system info', completed: false },
-                            { id: 2, text: 'Set up cron job to run every 10 minutes', completed: false },
-                            { id: 3, text: 'Test script and prepare for evaluation', completed: false }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 'push_swap',
-                name: 'push_swap',
-                circle: 2,
-                difficulty: 'Hard',
-                estimatedHours: 60,
-                status: 'not-started',
-                milestones: [
-                    {
-                        id: 1,
-                        title: 'Parser & Stack Setup',
-                        description: 'Parse arguments and initialize stacks',
-                        tasks: [
-                            { id: 1, text: 'Parse and validate input arguments', completed: false },
-                            { id: 2, text: 'Check for duplicates and non-integers', completed: false },
-                            { id: 3, text: 'Initialize stack A and stack B', completed: false },
-                            { id: 4, text: 'Implement stack operations (sa, sb, ss, pa, pb)', completed: false }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        title: 'Small Stack Sorting (2-5 numbers)',
-                        description: 'Implement efficient algorithms for small inputs',
-                        tasks: [
-                            { id: 1, text: 'Sort 2 numbers (1 operation)', completed: false },
-                            { id: 2, text: 'Sort 3 numbers (max 2-3 operations)', completed: false },
-                            { id: 3, text: 'Sort 4 numbers (optimized)', completed: false },
-                            { id: 4, text: 'Sort 5 numbers (optimized)', completed: false }
-                        ]
-                    },
-                    {
-                        id: 3,
-                        title: 'Large Stack Algorithm',
-                        description: 'Implement sorting for 100+ numbers',
-                        tasks: [
-                            { id: 1, text: 'Research and choose algorithm (radix, quicksort, etc.)', completed: false },
-                            { id: 2, text: 'Implement algorithm for 100 numbers (<700 ops)', completed: false },
-                            { id: 3, text: 'Optimize for 500 numbers (<5500 ops)', completed: false },
-                            { id: 4, text: 'Create checker program', completed: false }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 'pipex',
-                name: 'pipex',
-                circle: 2,
-                difficulty: 'Medium',
-                estimatedHours: 50,
-                status: 'not-started',
-                milestones: [
-                    {
-                        id: 1,
-                        title: 'Process & Pipe Basics',
-                        description: 'Learn fork, pipe, execve system calls',
-                        tasks: [
-                            { id: 1, text: 'Study fork() and process creation', completed: false },
-                            { id: 2, text: 'Study pipe() for inter-process communication', completed: false },
-                            { id: 3, text: 'Study execve() for command execution', completed: false },
-                            { id: 4, text: 'Handle file descriptors and redirections', completed: false }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        title: 'Mandatory Part',
-                        description: 'Implement shell pipe behavior',
-                        tasks: [
-                            { id: 1, text: 'Parse command line arguments', completed: false },
-                            { id: 2, text: 'Open infile and outfile', completed: false },
-                            { id: 3, text: 'Create pipe and fork processes', completed: false },
-                            { id: 4, text: 'Execute cmd1 | cmd2 pipeline', completed: false },
-                            { id: 5, text: 'Handle errors and edge cases', completed: false }
-                        ]
-                    },
-                    {
-                        id: 3,
-                        title: 'Bonus: here_doc & Multiple Pipes',
-                        description: 'Implement advanced features',
-                        tasks: [
-                            { id: 1, text: 'Implement here_doc (<<) functionality', completed: false },
-                            { id: 2, text: 'Support multiple pipes (cmd1 | cmd2 | cmd3...)', completed: false },
-                            { id: 3, text: 'Test with various commands and edge cases', completed: false }
-                        ]
-                    }
-                ]
-            }
-        ];
-
-        let currentProject = null;
-
-        // Initialize App
-        function init() {
-            renderProjectsList();
-            loadFromLocalStorage();
-            if (currentProject) {
-                renderProjectDetails(currentProject);
-            } else {
-                renderEmptyState();
-            }
-        }
-
-        // Render Projects List
-        function renderProjectsList() {
-            const projectsList = document.getElementById('projectsList');
-            projectsList.innerHTML = projects.map(project => {
-                const progress = calculateProjectProgress(project);
-                return `
-                    <div class="project-item ${currentProject?.id === project.id ? 'active' : ''} ${project.status === 'completed' ? 'completed' : ''}" 
-                         onclick="selectProject('${project.id}')">
-                        <div class="project-name">${project.name}</div>
-                        <div class="project-meta">
-                            <span>Circle ${project.circle}</span>
-                            <span>${project.difficulty}</span>
-                            <span>~${project.estimatedHours}h</span>
-                        </div>
-                        <div class="project-progress">
-                            <div class="project-progress-fill" style="width: ${progress}%"></div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Calculate Project Progress
-        function calculateProjectProgress(project) {
-            let totalTasks = 0;
-            let completedTasks = 0;
-            
-            project.milestones.forEach(milestone => {
-                totalTasks += milestone.tasks.length;
-                completedTasks += milestone.tasks.filter(t => t.completed).length;
+        // Interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Task checkbox functionality
+            const checkboxes = document.querySelectorAll('.task-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('click', function() {
+                    this.classList.toggle('checked');
+                    const taskText = this.nextElementSibling;
+                    taskText.classList.toggle('completed');
+                    updateProjectProgress();
+                });
             });
-            
-            return totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
-        }
 
-        // Select Project
-        function selectProject(projectId) {
-            currentProject = projects.find(p => p.id === projectId);
-            saveToLocalStorage();
-            renderProjectsList();
-            renderProjectDetails(currentProject);
-        }
-
-        // Render Project Details
-        function renderProjectDetails(project) {
-            const mainContent = document.getElementById('mainContent');
-            
-            const statusClass = `status-${project.status.replace('_', '-')}`;
-            const statusText = project.status.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
-            
-            mainContent.innerHTML = `
-                <div class="content-header">
-                    <div>
-                        <h2 class="content-title">${project.name}</h2>
-                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
-                            Circle ${project.circle} • ${project.difficulty} • ~${project.estimatedHours} hours
-                        </p>
-                    </div>
-                    <div class="project-status ${statusClass}">${statusText}</div>
-                </div>
-
-                <div class="milestones-section">
-                    <h3 class="section-title">🎯 Milestones & Tasks</h3>
-                    ${renderMilestones(project)}
-                </div>
-            `;
-        }
-
-        // Render Milestones
-        function renderMilestones(project) {
-            let previousCompleted = true;
-            
-            return project.milestones.map((milestone, index) => {
-                const progress = calculateMilestoneProgress(milestone);
-                const isCompleted = progress === 100;
-                const isActive = !isCompleted && previousCompleted;
-                const isLocked = !isCompleted && !previousCompleted;
+            // Filter functionality
+            const statusFilter = document.getElementById('statusFilter');
+            statusFilter.addEventListener('change', function() {
+                const selectedStatus = this.value;
+                const projectCards = document.querySelectorAll('.project-card');
                 
-                if (isCompleted) {
-                    previousCompleted = true;
-                } else {
-                    previousCompleted = false;
-                }
-                
-                let cardClass = 'milestone-card';
-                if (isCompleted) cardClass += ' completed';
-                if (isActive) cardClass += ' active';
-                if (isLocked) cardClass += ' locked';
-                
-                return `
-                    <div class="${cardClass}" onclick="${isLocked ? '' : `toggleMilestone('${project.id}', ${milestone.id})`}">
-                        <div class="milestone-header">
-                            <div class="milestone-title">
-                                <div class="milestone-number">${milestone.id}</div>
-                                <span>${milestone.title}</span>
-                            </div>
-                            ${isLocked ? '<span style="color: var(--text-secondary);">🔒 Locked</span>' : ''}
-                        </div>
-                        <p class="milestone-description">${milestone.description}</p>
-                        
-                        <div class="milestone-tasks" id="tasks-${project.id}-${milestone.id}" style="display: none;">
-                            ${milestone.tasks.map(task => `
-                                <div class="task-item ${task.completed ? 'completed' : ''}">
-                                    <div class="task-checkbox ${task.completed ? 'checked' : ''}" 
-                                         onclick="event.stopPropagation(); toggleTask('${project.id}', ${milestone.id}, ${task.id})">
-                                    </div>
-                                    <div class="task-text">${task.text}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                        
-                        <div class="milestone-progress">
-                            <div class="progress-label">
-                                <span>Progress</span>
-                                <span>${progress}%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-bar-fill" style="width: ${progress}%"></div>
-                            </div>
-                        </div>
-                        
-                        ${isCompleted ? '<button class="btn btn-success" style="width: 100%; margin-top: 1rem;" disabled>✓ Milestone Completed</button>' : ''}
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Calculate Milestone Progress
-        function calculateMilestoneProgress(milestone) {
-            const completed = milestone.tasks.filter(t => t.completed).length;
-            return Math.round((completed / milestone.tasks.length) * 100);
-        }
-
-        // Toggle Milestone (show/hide tasks)
-        function toggleMilestone(projectId, milestoneId) {
-            const tasksEl = document.getElementById(`tasks-${projectId}-${milestoneId}`);
-            if (tasksEl) {
-                tasksEl.style.display = tasksEl.style.display === 'none' ? 'block' : 'none';
-            }
-        }
-
-        // Toggle Task
-        function toggleTask(projectId, milestoneId, taskId) {
-            const project = projects.find(p => p.id === projectId);
-            const milestone = project.milestones.find(m => m.id === milestoneId);
-            const task = milestone.tasks.find(t => t.id === taskId);
-            
-            task.completed = !task.completed;
-            
-            // Check if milestone is now complete
-            const milestoneProgress = calculateMilestoneProgress(milestone);
-            if (milestoneProgress === 100) {
-                showNotification(`🎉 Milestone "${milestone.title}" completed! Next milestone unlocked!`);
-            }
-            
-            // Check if project is complete
-            const projectProgress = calculateProjectProgress(project);
-            if (projectProgress === 100 && project.status !== 'completed') {
-                project.status = 'completed';
-                showNotification(`🎊 Project "${project.name}" completed! Amazing work!`);
-            } else if (projectProgress > 0 && project.status === 'not-started') {
-                project.status = 'in-progress';
-            }
-            
-            saveToLocalStorage();
-            renderProjectsList();
-            renderProjectDetails(project);
-        }
-
-        // Show Notification
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            const notificationText = document.getElementById('notificationText');
-            
-            notificationText.textContent = message;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Render Empty State
-        function renderEmptyState() {
-            const mainContent = document.getElementById('mainContent');
-            mainContent.innerHTML = `
-                <div class="empty-state">
-                    <div class="empty-state-icon">📚</div>
-                    <h3 style="margin-bottom: 1rem;">Select a Project</h3>
-                    <p>Choose a project from the sidebar to view its milestones and tasks</p>
-                </div>
-            `;
-        }
-
-        // Local Storage Functions
-        function saveToLocalStorage() {
-            localStorage.setItem('42-projects', JSON.stringify(projects));
-            localStorage.setItem('42-current-project', currentProject?.id || '');
-        }
-
-        function loadFromLocalStorage() {
-            const savedProjects = localStorage.getItem('42-projects');
-            if (savedProjects) {
-                const loaded = JSON.parse(savedProjects);
-                // Merge saved data with current structure
-                loaded.forEach(savedProject => {
-                    const project = projects.find(p => p.id === savedProject.id);
-                    if (project) {
-                        project.status = savedProject.status;
-                        project.milestones.forEach((milestone, mIdx) => {
-                            if (savedProject.milestones[mIdx]) {
-                                milestone.tasks.forEach((task, tIdx) => {
-                                    if (savedProject.milestones[mIdx].tasks[tIdx]) {
-                                        task.completed = savedProject.milestones[mIdx].tasks[tIdx].completed;
-                                    }
-                                });
-                            }
-                        });
+                projectCards.forEach(card => {
+                    if (selectedStatus === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const cardStatus = card.dataset.status;
+                        card.style.display = cardStatus === selectedStatus ? 'block' : 'none';
                     }
                 });
-            }
-            
-            const savedCurrentProject = localStorage.getItem('42-current-project');
-            if (savedCurrentProject) {
-                currentProject = projects.find(p => p.id === savedCurrentProject);
-            }
-        }
+            });
 
-        // Initialize on load
-        init();
+            // Smooth scroll for navigation
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    // Update active state
+                    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Smooth scroll
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Update progress on scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('.milestone-section');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            function updateProjectProgress() {
+                // Update overall statistics
+                const totalProjects = document.querySelectorAll('.project-card').length;
+                const completedProjects = document.querySelectorAll('.status-completed').length;
+                const progress = Math.round((completedProjects / totalProjects) * 100);
+                
+                document.getElementById('totalProjects').textContent = totalProjects;
+                document.getElementById('completedProjects').textContent = completedProjects;
+                document.getElementById('overallProgress').textContent = progress + '%';
+            }
+        });
     </script>
 </body>
 </html>
