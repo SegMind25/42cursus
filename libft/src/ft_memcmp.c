@@ -9,9 +9,9 @@ int ft_memcmp(const void *s1, const void *s2, size_t n)
   size_t i; // Counter
 
   if(n == 0) // n -> Size All For string
-    return 1;
-  p1 = (const unsigned char *)s1; // For p1 = hello and can use it for char cuz the void can't use it
-  p2 = (const unsigned char *)s2; // for p2 = hellz Like Epalain In above
+    return 0;
+  p1 = s1; // For p1 = hello and can use it for char cuz the void can't use it
+  p2 = s2; // for p2 = hellz Like Epalain In above
 
   i = 0;
   while(i < n)
@@ -28,9 +28,6 @@ int ft_memcmp(const void *s1, const void *s2, size_t n)
 //  char str1[] = "Hello";
 //  char str2[] = "Hellz";
 
-//  int arr1[] = {1, 2, 3, 4, 5};
-//  int arr2[] = {1, 2, 3, 4, 5};
-  
 //  printf("=== The First Test ===\n");
 //  printf("ft_memcmp: %d\n", ft_memcmp(str1, str2, 5));
 //  printf("memcmp: %d\n\n", memcmp(str1, str2, 5));
