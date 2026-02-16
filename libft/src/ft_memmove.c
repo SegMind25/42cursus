@@ -6,7 +6,7 @@
 /*   By: Bekkali <SegMind25@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 11:58:20 by Bekkali           #+#    #+#             */
-/*   Updated: 2026/02/16 12:38:03 by Bekkali          ###   ########.fr       */
+/*   Updated: 2026/02/16 13:19:59 by Bekkali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void *ft_memmove(void *dest, const void *src, size_t len)
 //  printf("=== Test 1: Non-Overlapping Copy ===\n");
 //  char dest1[50] = "ZZZZZZZZZZZZZZ";
 //  char dest2[50] = "ZZZZZZZZZZZZZZ";
+
+//  ft_memmove(dest1, src1, 13);
+//  memmove(dest2, src2, 13);
 
 //  printf("ft_memmove: %s\n", dest1);
 //  printf("  memove : %s\n", dest2);
