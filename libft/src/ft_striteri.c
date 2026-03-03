@@ -6,7 +6,7 @@
 /*   By: Bekkali <SegMind25@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 10:06:57 by Bekkali           #+#    #+#             */
-/*   Updated: 2026/02/25 10:20:03 by Bekkali          ###   ########.fr       */
+/*   Updated: 2026/03/03 08:44:49 by Bekkali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void  ft_striteri(char *s, void (*f)(unsigned int, char *))
   size_t  i;
 
   i = 0;
-  if(!s == !f)
+  if(!s || !f)
     return ;
   while(s[i])
   {
@@ -38,15 +38,15 @@ void  to_upper(unsigned int i, char *c)
     *c -= 32;
 }
 
-int main()
-{
-  char s1[] = "Hello World";
-  char s2[] = "Hello World";
+//int main()
+//{
+//  char s1[] = "Hello World";
+//  char s2[] = "Hello World";
 
-  printf("=== Print Char ===\n");
-  ft_striteri(s1, ft_print_char);
+// printf("=== Print Char ===\n");
+//  ft_striteri(s1, ft_print_char);
 
-  printf("\n === To Upper ===\n");
-  printf("\n Before: %s\n \n");
-  ft_striteri();
-}
+//  printf("\n === To Upper ===\n");
+//  printf("\n Before: %s\n \n");
+//  ft_striteri();
+//}
