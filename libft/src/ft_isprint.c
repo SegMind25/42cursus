@@ -6,11 +6,11 @@
 /*   By: segmind25 <SegMind25@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 19:53:07 by segmind25         #+#    #+#             */
-/*   Updated: 2026/08/13 19:56:25 by segmind25        ###   ########.fr       */
+/*   Updated: 2026/08/17 13:37:10 by segmind25        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	ft_isprint(int c)
 {

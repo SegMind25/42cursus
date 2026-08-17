@@ -6,11 +6,11 @@
 /*   By: segmind25 <SegMind25@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 19:45:08 by segmind25         #+#    #+#             */
-/*   Updated: 2026/08/13 19:47:13 by segmind25        ###   ########.fr       */
+/*   Updated: 2026/08/17 13:36:56 by segmind25        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	ft_isdigit(int c)
 {

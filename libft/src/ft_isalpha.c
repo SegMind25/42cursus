@@ -6,11 +6,11 @@
 /*   By: segmind25 <SegMind25@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 19:29:42 by segmind25         #+#    #+#             */
-/*   Updated: 2026/08/13 19:39:08 by segmind25        ###   ########.fr       */
+/*   Updated: 2026/08/17 13:36:31 by segmind25        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	ft_isalpha(int c)
 {

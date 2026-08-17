@@ -6,11 +6,11 @@
 /*   By: segmind25 <SegMind25@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/14 17:49:14 by segmind25         #+#    #+#             */
-/*   Updated: 2026/08/14 18:01:26 by segmind25        ###   ########.fr       */
+/*   Updated: 2026/08/17 13:38:19 by segmind25        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 void	ft_bzero(void *b, size_t len)
 {

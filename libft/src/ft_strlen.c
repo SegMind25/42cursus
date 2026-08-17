@@ -6,11 +6,11 @@
 /*   By: segmind25 <SegMind25@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 19:57:06 by segmind25         #+#    #+#             */
-/*   Updated: 2026/08/13 20:08:51 by segmind25        ###   ########.fr       */
+/*   Updated: 2026/08/17 13:37:32 by segmind25        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
